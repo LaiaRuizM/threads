@@ -2,7 +2,7 @@
 
 const Feed = () => {
   return (
-    <div>
+    <div className="container mx-auto w-[600px]">
       <p className="text-3xl font-bold underline text-red-800">FEED</p>
     </div>
   );

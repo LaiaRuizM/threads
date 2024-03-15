@@ -5,11 +5,13 @@ import Feed from "./pages/feed";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Feed />} />
-      </Routes>
-    </Router>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Feed />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
