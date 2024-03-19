@@ -1,4 +1,5 @@
 // import React from 'react';
+import { MoreHorizontal } from "react-feather";
 
 const Feed = () => {
   return (
@@ -13,7 +14,10 @@ const Feed = () => {
           <div className="flex justify-between gap-2">
             <strong>Laia</strong>
 
-            <div>3hrs ago</div>
+            <div>
+              <p>3hrs ago</p>
+              <MoreHorizontal />
+            </div>
           </div>
         </div>
       </div>
