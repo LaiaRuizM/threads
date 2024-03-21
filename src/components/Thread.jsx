@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   MoreHorizontal,
   Heart,
@@ -6,7 +7,15 @@ import {
   Send,
 } from "react-feather";
 
-const Thread = () => {
+const Thread = ({ thread }) => {
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    setloading(false);
+  }, []);
+
+  if (loading) return null;
+
   return (
     <div className="flex p-4">
       <img
@@ -27,10 +36,7 @@ const Thread = () => {
 
         {/* Thread body*/}
         <div className="py-4">
-          <span>
-            Zuckerberg claims that this app has already 30M users. If that is
-            true it is fkin impressive.
-          </span>
+          <span>{thread.body}</span>
         </div>
 
         <div className="flex gap-4 py-4">
