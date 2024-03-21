@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import {
   MoreHorizontal,
@@ -54,6 +55,12 @@ const Thread = ({ thread }) => {
       </div>
     </div>
   );
+};
+
+Thread.propTypes = {
+  thread: PropTypes.shape({
+    body: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Thread;
