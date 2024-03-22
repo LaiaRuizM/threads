@@ -9,10 +9,12 @@ import {
 } from "react-feather";
 
 const Thread = ({ thread }) => {
-  const [loading, setloading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  // const [owner, setOwner] = useState(null);
 
   useEffect(() => {
-    setloading(false);
+    //Get Owner information
+    setLoading(false);
   }, []);
 
   if (loading) return null;
