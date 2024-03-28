@@ -9,7 +9,7 @@ export default async ({ req, res, log, error }) => {
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('<PROJECT_ID>')
     // .setProject(import.meta.env.APPWRITE_PROJECT_ID)
-    .setKey(req.variables['APPWRITE_API_KEY']);
+    .setKey('[API_KEY]');
   
     const users = new Users(client);
 
