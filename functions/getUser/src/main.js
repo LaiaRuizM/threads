@@ -1,12 +1,15 @@
-import { Client, Users } from 'node-appwrite';
+import { Client, Users } from "node-appwrite";
+// import { Client, Users } from "appwrite";
+// import appwriteClient from "../../../src/appwriteConfig";
 
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(import.meta.env.VITE_PROJECT_ID)
-    .setKey(import.meta.env.APPWRITE_API_KEY);
+    .setProject('<PROJECT_ID>')
+    // .setProject(import.meta.env.APPWRITE_PROJECT_ID)
+    .setKey(req.variables['APPWRITE_API_KEY']);
   
     const users = new Users(client);
 
@@ -22,7 +25,7 @@ export default async ({ req, res, log, error }) => {
      `res.send()` // dispatches a string back to the client
     return res.send('Hello, World!');
   }
-  const payload = req.payload;
+  const payload = JSON.parse(req.payload);
   console.log('payload:', payload);
 
   const response = await users.get(payload['owner_id']);
