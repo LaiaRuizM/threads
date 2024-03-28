@@ -35,9 +35,16 @@ let payload;
     console.error('Error parsing payload:', error);
   }
   console.log('payload:', payload);
+  
+  // const response = await users.get(payload['owner_id']);
+  // console.log('response:', response);
 
-  const response = await users.get(payload['owner_id']);
+  if (payload && payload.owner_id) {
+  const response = await users.get(payload.owner_id);
   console.log('response:', response);
+} else {
+  console.error('Payload is undefined or does not have owner_id property');
+}
 
 
   // `res.json()` is a handy helper for sending JSON
