@@ -25,7 +25,15 @@ export default async ({ req, res, log, error }) => {
      `res.send()` // dispatches a string back to the client
     return res.send('Hello, World!');
   }
-  const payload = JSON.parse(req.payload);
+  // const payload = JSON.parse(req.payload);
+
+let payload;
+  try {
+    payload = JSON.parse(req.payload);
+  } catch (error) {
+    // Handle the error
+    console.error('Error parsing payload:', error);
+  }
   console.log('payload:', payload);
 
   const response = await users.get(payload['owner_id']);
