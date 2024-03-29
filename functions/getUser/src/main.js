@@ -46,7 +46,8 @@ let payload;
   //object to avoid some unnecesary info:
     const userData = {
       '$id': response.$id,
-      'name': response.name
+      'name': response.name,
+      'profile_pic': response['prefs']['profile_pic']
 
     }
 
