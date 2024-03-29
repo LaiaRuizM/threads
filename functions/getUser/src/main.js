@@ -42,6 +42,15 @@ let payload;
   if (payload && payload.owner_id) {
   const response = await users.get(payload.owner_id);
   console.log('response:', response);
+
+  //object to avoid some unnecesary info:
+    const userData = {
+      '$id': response.$id,
+      'name': response.name
+
+    }
+
+  res.json(userData);
 } else {
   console.error('Payload is undefined or does not have owner_id property');
 }
