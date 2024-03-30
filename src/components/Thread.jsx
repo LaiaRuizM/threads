@@ -7,7 +7,7 @@ import {
   Repeat,
   Send,
 } from "react-feather";
-import functions from "../appwriteConfig";
+import { functions } from "../appwriteConfig";
 
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
