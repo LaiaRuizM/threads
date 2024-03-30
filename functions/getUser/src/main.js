@@ -1,6 +1,4 @@
 import { Client, Users } from "node-appwrite";
-// import { Client, Users } from "appwrite";
-// import appwriteClient from "../../../src/appwriteConfig";
 
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
