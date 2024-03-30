@@ -47,8 +47,8 @@ let payload;
     const userData = {
       '$id': response.$id,
       'name': response.name,
-      'profile_pic': response['prefs']['profile_pic']
-
+      'profile_pic': response['prefs']['profile_pic'],
+      'username': response['prefs']['username']
     }
 
   res.json(userData);

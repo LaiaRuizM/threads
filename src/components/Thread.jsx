@@ -7,6 +7,7 @@ import {
   Repeat,
   Send,
 } from "react-feather";
+import functions from "../appwriteConfig";
 
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
@@ -14,8 +15,17 @@ const Thread = ({ thread }) => {
 
   useEffect(() => {
     //Get Owner information
-    setLoading(false);
+    getUserInfo();
+    // setLoading(false);
   }, []);
+
+  const getUserInfo = async () => {
+    const response = await functions.createExecution("65fcd9a01714d2327a1d");
+    console.log("GET USER REP:", response);
+    setLoading(false);
+  };
+
+  // function_id = 65fcd9a01714d2327a1d
 
   if (loading) return null;
 
