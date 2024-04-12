@@ -20,7 +20,14 @@ const Thread = ({ thread }) => {
   }, []);
 
   const getUserInfo = async () => {
-    const response = await functions.createExecution("65fcd9a01714d2327a1d");
+    const payload = {
+      owner_id: thread.owner_id,
+    };
+
+    const response = await functions.createExecution(
+      "65fcd9a01714d2327a1d",
+      JSON.stringify(payload)
+    );
     console.log("GET USER REP:", response);
     setLoading(false);
   };
