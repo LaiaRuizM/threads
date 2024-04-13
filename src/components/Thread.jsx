@@ -29,10 +29,13 @@ const Thread = ({ thread }) => {
       JSON.stringify(payload)
     );
 
-    const userData = JSON.parse(response.response);
-
-    console.log("GET USER REP:", userData);
-    setLoading(false);
+    if (response && response.response) {
+      const userData = JSON.parse(response.response);
+      console.log("GET USER REP:", userData);
+      setLoading(false);
+    } else {
+      console.error("No se recibió una respuesta válida.");
+    }
   };
 
   // function_id = 65fcd9a01714d2327a1d
