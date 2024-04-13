@@ -28,7 +28,10 @@ const Thread = ({ thread }) => {
       "65fcd9a01714d2327a1d",
       JSON.stringify(payload)
     );
-    console.log("GET USER REP:", response);
+
+    const userData = JSON.parse(response.response);
+
+    console.log("GET USER REP:", userData);
     setLoading(false);
   };
 
