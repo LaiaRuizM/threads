@@ -11,7 +11,7 @@ import { functions } from "../appwriteConfig";
 
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
-  const [owner, setOwner] = useState(null);
+  // const [owner, setOwner] = useState(null);
 
   useEffect(() => {
     //Get Owner information
@@ -31,11 +31,11 @@ const Thread = ({ thread }) => {
 
     console.log("response:", response);
 
-    const userData = JSON.parse(response.response);
+    // const userData = JSON.parse(response.response);
 
     // console.log("GET USER REP:", response);
     // console.log("GET USER REP:", userData);
-    setOwner(userData);
+    // setOwner(userData);
     setLoading(false);
   };
 
@@ -47,15 +47,15 @@ const Thread = ({ thread }) => {
     <div className="flex p-4">
       <img
         className="w-10 h-10 rounded-full object-cover"
-        src={owner}
-        // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
+        // src={owner}
+        src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
         alt=""
       />
       <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
         {/* Thread header*/}
         <div className="flex justify-between gap-2">
           {/* <strong>{thread.owner_id}</strong> */}
-          <strong>{owner.name}</strong>
+          {/* <strong>{owner.name}</strong> */}
 
           <div className="flex justify-between gap-2">
             <p className="text-[rgba(97,97,97,1)]">3hrs ago</p>

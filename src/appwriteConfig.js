@@ -9,17 +9,6 @@ export const COLLECTION_ID_THREADS = import.meta.env.VITE_COLLECTION_ID_THREADS;
 
 client.setEndpoint(VITE_ENDPOINT).setProject(PROJECT_ID);
 
-const promise = functions.listExecutions("[FUNCTION_ID]");
-
-promise.then(
-  function (response) {
-    console.log(response); // Success
-  },
-  function (error) {
-    console.log(error); // Failure
-  }
-);
-
 export const database = new Databases(client);
 export const functions = new Functions(client);
 export default client;
