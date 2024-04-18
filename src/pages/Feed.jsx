@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Image } from "react-feather";
 import Thread from "../components/Thread";
 import { database, DEV_DB_ID, COLLECTION_ID_THREADS } from "../appwriteConfig";
 // import { Query } from "appwrite";
@@ -32,8 +33,12 @@ const Feed = () => {
             placeholder="Say something..."
             value={threadBody}
             onChange={e => {
-              setThreadBody(e.target.value);
+              setThreadBody(e.target.value); //update body
             }}></textarea>
+          <div>
+            <Image />
+            <input type="submit" value="Post" />
+          </div>
         </form>
       </div>
 
