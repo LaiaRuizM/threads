@@ -37,7 +37,11 @@ const Feed = () => {
             }}></textarea>
           <div>
             <Image />
-            <input className="bg-white text-black" type="submit" value="Post" />
+            <input
+              className="bg-white text-black py-2 px-4 border-black rounded"
+              type="submit"
+              value="Post"
+            />
           </div>
         </form>
       </div>
