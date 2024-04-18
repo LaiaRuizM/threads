@@ -59,7 +59,9 @@ const Thread = ({ thread }) => {
 
           <div className="flex justify-between gap-2">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
-            <p className="text-[rgba(97,97,97,1)]">{thread.$createdAt}</p>
+            <p className="text-[rgba(97,97,97,1)]">
+              {new Date(thread.$createdAt).toLocaleString()}
+            </p>{" "}
             <MoreHorizontal />
           </div>
         </div>
@@ -90,8 +92,8 @@ Thread.propTypes = {
   thread: PropTypes.shape({
     body: PropTypes.string.isRequired,
     owner_id: PropTypes.string.isRequired,
-    $createdAt: PropTypes.instanceOf(Date).isRequired,
-  }).isRequired,
+    $createdAt: PropTypes.string.isRequired,
+  }),
 };
 
 export default Thread;
