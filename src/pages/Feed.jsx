@@ -3,6 +3,7 @@ import { Image } from "react-feather";
 import Thread from "../components/Thread";
 import { database, DEV_DB_ID, COLLECTION_ID_THREADS } from "../appwriteConfig";
 // import { Query } from "appwrite";
+import { ID } from "appwrite";
 
 const Feed = () => {
   const [threads, setThreads] = useState([]);
@@ -23,10 +24,30 @@ const Feed = () => {
     console.log(response.documents);
   };
 
+  const handleThreadSubmit = async e => {
+    e.preventDefault();
+
+    const payload = {
+      owner_id: "65fa532446ea5da20a24",
+      body: threadBody,
+      image: null,
+    };
+
+    const response = await database.createDocument(
+      DEV_DB_ID,
+      COLLECTION_ID_THREADS,
+      ID.unique(),
+      payload
+    );
+
+    console.log("RESPONSE:", response);
+    setThreadBody("");
+  };
+
   return (
     <div className="container mx-auto max-w-[600px]">
       <div className="p-4">
-        <form>
+        <form onSubmit={handleThreadSubmit}>
           <textarea
             className="rounded-lg p-4 w-full bg-[rgba(29,29,29,1)]"
             required
