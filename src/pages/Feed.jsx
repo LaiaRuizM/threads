@@ -28,6 +28,7 @@ const Feed = () => {
       <div className="p-4">
         <form>
           <textarea
+            className="rounded-lg p-4 w-full bg-[rgba(29,29,29,1)]"
             required
             name="body"
             placeholder="Say something..."
@@ -38,7 +39,7 @@ const Feed = () => {
           <div className="flex justify-between items-center">
             <Image size={24} />
             <input
-              className="bg-white text-black py-2 px-4 border-black rounded"
+              className="bg-white text-black py-2 px-4 border text-sm border-black rounded"
               type="submit"
               value="Post"
             />
