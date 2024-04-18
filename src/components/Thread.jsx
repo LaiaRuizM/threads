@@ -67,7 +67,12 @@ const Thread = ({ thread }) => {
           <div className="flex justify-between gap-2">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
             <p className="text-[rgba(97,97,97,1)]">
-              {<ReactTimeAgo date={thread.$createdAt} locale="en-US" />}
+              {
+                <ReactTimeAgo
+                  date={Date.parse(thread.$createdAt)}
+                  locale="en-US"
+                />
+              }
             </p>
             <MoreHorizontal />
           </div>
