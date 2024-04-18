@@ -9,6 +9,13 @@ import {
 } from "react-feather";
 import { functions } from "../appwriteConfig";
 
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+import ReactTimeAgo from "react-time-ago";
+
+TimeAgo.addDefaultLocale(en);
+// TimeAgo.addLocale(en);
+
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
   // const [owner, setOwner] = useState(null);
@@ -60,8 +67,8 @@ const Thread = ({ thread }) => {
           <div className="flex justify-between gap-2">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
             <p className="text-[rgba(97,97,97,1)]">
-              {new Date(thread.$createdAt).toLocaleString()}
-            </p>{" "}
+              {<ReactTimeAgo date={thread.$createdAt} locale="en-US" />}
+            </p>
             <MoreHorizontal />
           </div>
         </div>
@@ -93,7 +100,7 @@ Thread.propTypes = {
     body: PropTypes.string.isRequired,
     owner_id: PropTypes.string.isRequired,
     $createdAt: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default Thread;
