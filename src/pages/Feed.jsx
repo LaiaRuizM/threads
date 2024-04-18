@@ -25,8 +25,8 @@ const Feed = () => {
 
   return (
     <div className="container mx-auto max-w-[600px]">
-      <div>
-        <form action="">
+      <div className="p-4">
+        <form>
           <textarea
             required
             name="body"
@@ -35,8 +35,8 @@ const Feed = () => {
             onChange={e => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
-          <div>
-            <Image />
+          <div className="flex justify-between items-center">
+            <Image size={24} />
             <input
               className="bg-white text-black py-2 px-4 border-black rounded"
               type="submit"
