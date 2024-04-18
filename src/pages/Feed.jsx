@@ -8,6 +8,7 @@ import { ID } from "appwrite";
 const Feed = () => {
   const [threads, setThreads] = useState([]);
   const [threadBody, setThreadBody] = useState("");
+  // const [threadImg, setThreadImg] = useState(null);
 
   useEffect(() => {
     getThreads();
@@ -19,7 +20,7 @@ const Feed = () => {
       COLLECTION_ID_THREADS
       // [Query.orderDesc("$createdAt")]
     );
-    console.log("response:", response);
+    console.log("response feed:", response);
     setThreads(response.documents);
     console.log(response.documents);
   };
@@ -30,6 +31,7 @@ const Feed = () => {
     const payload = {
       owner_id: "65fa532446ea5da20a24",
       body: threadBody,
+      // image: threadImg,
       image: null,
     };
 
@@ -41,7 +43,7 @@ const Feed = () => {
     );
 
     console.log("RESPONSE:", response);
-    setThreads(prevState => [response, ...prevState]);
+    setThreads(prevState => [response, ...prevState]); // previous state will be the original threads
     setThreadBody("");
   };
 

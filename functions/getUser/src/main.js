@@ -39,7 +39,7 @@ let payload;
 
   if (payload && payload.owner_id) {
   const response = await users.get(payload.owner_id);
-  console.log('response:', response);
+  console.log('response main:', response);
 
   //object to avoid some unnecesary info:
     const userData = {

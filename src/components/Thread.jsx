@@ -36,7 +36,7 @@ const Thread = ({ thread }) => {
       JSON.stringify(payload)
     );
 
-    console.log("response:", response);
+    console.log("response thread:", response);
 
     // const userData = JSON.parse(response.response);
 
@@ -82,6 +82,12 @@ const Thread = ({ thread }) => {
         {/* Thread body*/}
         <div className="py-4">
           <span>{thread.body}</span>
+          {thread.image && (
+            <img
+              className="object-cover border border-[rgba(49,49,50,1)] rounded-md"
+              src={thread.image}
+            />
+          )}
         </div>
 
         <div className="flex gap-4 py-4">
@@ -106,6 +112,7 @@ Thread.propTypes = {
     body: PropTypes.string.isRequired,
     owner_id: PropTypes.string.isRequired,
     $createdAt: PropTypes.string.isRequired,
+    image: PropTypes.object.isRequired,
   }).isRequired,
 };
 
