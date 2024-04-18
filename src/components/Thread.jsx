@@ -69,7 +69,8 @@ const Thread = ({ thread }) => {
             <p className="text-[rgba(97,97,97,1)]">
               {
                 <ReactTimeAgo
-                  date={Date.parse(thread.$createdAt)}
+                  // date={Date.parse(thread.$createdAt)}
+                  date={new Date(thread.$createdAt).getTime()}
                   locale="en-US"
                 />
               }
