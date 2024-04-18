@@ -41,6 +41,7 @@ const Feed = () => {
     );
 
     console.log("RESPONSE:", response);
+    setThreads(prevState => [response, ...prevState]);
     setThreadBody("");
   };
 
