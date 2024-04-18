@@ -37,7 +37,7 @@ const Feed = () => {
             }}></textarea>
           <div>
             <Image />
-            <input type="submit" value="Post" />
+            <input className="bg-white text-black" type="submit" value="Post" />
           </div>
         </form>
       </div>
