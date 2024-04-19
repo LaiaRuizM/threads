@@ -109,10 +109,10 @@ const Thread = ({ thread }) => {
 
 Thread.propTypes = {
   thread: PropTypes.shape({
-    body: PropTypes.string.isRequired,
+    body: PropTypes.string,
     owner_id: PropTypes.string.isRequired,
     $createdAt: PropTypes.string.isRequired,
-    image: PropTypes.object.isRequired,
+    image: PropTypes.string, //null
   }).isRequired,
 };
 
