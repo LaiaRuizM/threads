@@ -65,7 +65,7 @@ const Thread = ({ thread }) => {
           <strong>{thread.owner_id}</strong>
           {/* <strong>{owner.name}</strong> */}
 
-          <div className="flex justify-between gap-2">
+          <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
             <p className="text-[rgba(97,97,97,1)]">
               {
@@ -77,7 +77,7 @@ const Thread = ({ thread }) => {
               }
             </p>
             {/* <MoreHorizontal /> */}
-            <Trash2 />
+            <Trash2 size={14} />
           </div>
         </div>
 
