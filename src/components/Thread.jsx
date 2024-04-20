@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import {
-  MoreHorizontal,
+  // MoreHorizontal,
   Heart,
   MessageCircle,
   Repeat,
   Send,
+  Trash2,
 } from "react-feather";
 import { functions } from "../appwriteConfig";
 
@@ -75,7 +76,8 @@ const Thread = ({ thread }) => {
                 />
               }
             </p>
-            <MoreHorizontal />
+            {/* <MoreHorizontal /> */}
+            <Trash2 />
           </div>
         </div>
 
