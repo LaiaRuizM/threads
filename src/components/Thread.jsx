@@ -8,7 +8,12 @@ import {
   Send,
   Trash2,
 } from "react-feather";
-import { functions } from "../appwriteConfig";
+import {
+  functions,
+  database,
+  COLLECTION_ID_THREADS,
+  DEV_DB_ID,
+} from "../appwriteConfig";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -49,7 +54,12 @@ const Thread = ({ thread }) => {
 
   // function_id = 65fcd9a01714d2327a1d
 
-  if (loading) return null;
+  const handleDelete = async () => {
+    database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, thread.$id);
+    console.log("Thread was deleted!");
+  };
+
+  if (loading) return;
 
   return (
     <div className="flex p-4">
@@ -77,7 +87,7 @@ const Thread = ({ thread }) => {
               }
             </p>
             {/* <MoreHorizontal /> */}
-            <Trash2 size={14} />
+            <Trash2 onClick={handleDelete} size={14} />
           </div>
         </div>
 
@@ -115,6 +125,7 @@ Thread.propTypes = {
     owner_id: PropTypes.string.isRequired,
     $createdAt: PropTypes.string.isRequired,
     image: PropTypes.string, //null
+    $id: PropTypes.string.isRequired,
   }).isRequired,
 };
 
