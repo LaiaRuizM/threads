@@ -97,8 +97,8 @@ const Thread = ({ thread }) => {
         </div>
 
         {/* Thread body*/}
-        <div className="py-4">
-          <span>{thread.body}</span>
+        <div className="py-4" style={{ whiteSpace: "pre-wrap" }}>
+          {thread.body}
           {thread.image && (
             <img
               className="object-cover border border-[rgba(49,49,50,1)] rounded-md"
