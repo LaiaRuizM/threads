@@ -47,6 +47,12 @@ const Feed = () => {
     setThreadBody("");
   };
 
+  const handleDeleteThread = async threadId => {
+    await database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, threadId);
+    console.log("Thread was deleted!");
+    setThreads(prevState => prevState.filter(item => item.$id !== threadId));
+  };
+
   return (
     <div className="container mx-auto max-w-[600px]">
       <div className="p-4">
@@ -72,7 +78,12 @@ const Feed = () => {
       </div>
 
       {threads.map(thread => (
-        <Thread key={thread.$id} thread={thread} setThreads={setThreads} />
+        <Thread
+          key={thread.$id}
+          thread={thread}
+          setThreads={setThreads}
+          onDelete={handleDeleteThread}
+        />
       ))}
     </div>
   );
