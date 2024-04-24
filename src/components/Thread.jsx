@@ -59,9 +59,7 @@ const Thread = ({ thread }) => {
   const handleDelete = async () => {
     database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, thread.$id);
     console.log("Thread was deleted!");
-    setThreads(prevState =>
-      prevState.filter(thread => thread.$id !== thread.id)
-    );
+    setThreads(prevState => prevState.filter(item => item.$id !== thread.$id));
   };
 
   if (loading) return;
@@ -131,7 +129,6 @@ Thread.propTypes = {
     $createdAt: PropTypes.string.isRequired,
     image: PropTypes.string, //null
     $id: PropTypes.string.isRequired,
-    id: PropTypes.string,
   }).isRequired,
 };
 
