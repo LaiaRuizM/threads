@@ -57,10 +57,10 @@ const Thread = ({ thread }) => {
   // function_id = 65fcd9a01714d2327a1d
 
   const handleDelete = async () => {
-    setThreads(prevState => prevState.filter(item => item.$id !== thread.$id));
-
-    database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, thread.$id);
+    await database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, thread.$id);
     console.log("Thread was deleted!");
+    setThreads(prevState => prevState.filter(item => item.$id !== thread.$id));
+    // window.location.reload();
   };
 
   if (loading) return;

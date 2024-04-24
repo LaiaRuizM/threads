@@ -69,7 +69,7 @@ const Feed = () => {
           <div className="flex justify-between items-center">
             <Image size={24} />
             <input
-              className="bg-white text-black py-2 px-4 border text-sm border-black rounded"
+              className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer"
               type="submit"
               value="Post"
             />
