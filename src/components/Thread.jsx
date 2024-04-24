@@ -19,6 +19,8 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import ReactTimeAgo from "react-time-ago";
 
+import setThreads from "../pages/feed";
+
 // TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(en);
 
@@ -57,7 +59,9 @@ const Thread = ({ thread }) => {
   const handleDelete = async () => {
     database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, thread.$id);
     console.log("Thread was deleted!");
-    setThreads(prevState => prevState.filter(thread.$id !== thread.id));
+    setThreads(prevState =>
+      prevState.filter(thread => thread.$id !== thread.id)
+    );
   };
 
   if (loading) return;
@@ -127,7 +131,7 @@ Thread.propTypes = {
     $createdAt: PropTypes.string.isRequired,
     image: PropTypes.string, //null
     $id: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
   }).isRequired,
 };
 
