@@ -66,7 +66,7 @@ const Feed = () => {
             onChange={e => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center border-y py-2  border-[rgba(49,49,50,1)]">
             <Image size={24} />
             <input
               className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer"
