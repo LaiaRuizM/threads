@@ -14,7 +14,7 @@ import { ID } from "appwrite";
 const Feed = () => {
   const [threads, setThreads] = useState([]);
   const [threadBody, setThreadBody] = useState("");
-  // const [threadImg, setThreadImg] = useState(null);
+  const [threadImg, setThreadImg] = useState(null);
 
   const fileRef = useRef(null);
 
@@ -39,8 +39,8 @@ const Feed = () => {
     const payload = {
       owner_id: "65fa532446ea5da20a24",
       body: threadBody,
-      // image: threadImg,
-      image: null,
+      image: threadImg,
+      // image: null,
     };
 
     const response = await database.createDocument(
@@ -79,7 +79,10 @@ const Feed = () => {
       fileObj
     );
 
-    console.log("FILE:", response);
+    const imagePreview = storage.getFilePreview(BUCKET_ID_IMAGES, response.$id);
+    setThreadImg(imagePreview.href);
+
+    // console.log("FILE:", response);
   };
 
   return (
@@ -95,6 +98,8 @@ const Feed = () => {
             onChange={e => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
+
+          <img src={threadImg} alt="Thread image" />
 
           <input
             style={{ display: "none" }}
