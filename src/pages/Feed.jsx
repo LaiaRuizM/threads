@@ -71,7 +71,7 @@ const Feed = () => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
 
-          <input type="file" ref={fileRef} />
+          <input style={{ display: "none" }} type="file" ref={fileRef} />
 
           <div className="flex justify-between items-center border-y py-2  border-[rgba(49,49,50,1)]">
             <Image onClick={handleClick} className="cursor-pointer" size={24} />
