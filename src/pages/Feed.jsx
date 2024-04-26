@@ -53,6 +53,7 @@ const Feed = () => {
     console.log("RESPONSE:", response);
     setThreads(prevState => [response, ...prevState]); // previous state will be the original threads
     setThreadBody("");
+    setThreadImg(null);
   };
 
   const handleDeleteThread = async threadId => {
