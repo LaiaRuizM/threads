@@ -63,6 +63,8 @@ const Thread = ({ thread }) => {
     // window.location.reload();
   };
 
+  const toggleLike = () => {};
+
   if (loading) return;
 
   return (
@@ -116,7 +118,7 @@ const Thread = ({ thread }) => {
         <div className="flex gap-4">
           <p className="text-[rgba(97,97,97,1)]">16 Replies</p>
           <p className="text-[rgba(97,97,97,1)]">·</p>
-          <p className="text-[rgba(97,97,97,1)]">87 Likes</p>
+          <p className="text-[rgba(97,97,97,1)]">{thread.likes} Likes</p>
         </div>
       </div>
     </div>
@@ -131,6 +133,7 @@ Thread.propTypes = {
     image: PropTypes.string, //null
     $id: PropTypes.string.isRequired,
     setThreads: PropTypes.func,
+    likes: PropTypes.integer,
   }).isRequired,
 };
 
