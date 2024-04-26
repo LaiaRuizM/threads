@@ -3,6 +3,7 @@ import { Image } from "react-feather";
 import Thread from "../components/Thread";
 import {
   database,
+  storage,
   DEV_DB_ID,
   COLLECTION_ID_THREADS,
   BUCKET_ID_IMAGES,
