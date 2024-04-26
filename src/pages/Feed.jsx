@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Image } from "react-feather";
 import Thread from "../components/Thread";
 import { database, DEV_DB_ID, COLLECTION_ID_THREADS } from "../appwriteConfig";
@@ -9,6 +9,8 @@ const Feed = () => {
   const [threads, setThreads] = useState([]);
   const [threadBody, setThreadBody] = useState("");
   // const [threadImg, setThreadImg] = useState(null);
+
+  const fileRef = useRef(null);
 
   useEffect(() => {
     getThreads();
@@ -53,6 +55,8 @@ const Feed = () => {
     setThreads(prevState => prevState.filter(item => item.$id !== threadId));
   };
 
+  const handleClick = async () => {};
+
   return (
     <div className="container mx-auto max-w-[600px]">
       <div className="p-4">
@@ -66,8 +70,11 @@ const Feed = () => {
             onChange={e => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
+
+          <input type="file" ref={fileRef} />
+
           <div className="flex justify-between items-center border-y py-2  border-[rgba(49,49,50,1)]">
-            <Image size={24} />
+            <Image onClick={handleClick} className="cursor-pointer" size={24} />
             <input
               className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer"
               type="submit"
