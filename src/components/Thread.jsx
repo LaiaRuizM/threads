@@ -63,7 +63,9 @@ const Thread = ({ thread }) => {
     // window.location.reload();
   };
 
-  const toggleLike = () => {};
+  const toggleLike = () => {
+    console.log("Liked toggled");
+  };
 
   if (loading) return;
 
@@ -109,7 +111,7 @@ const Thread = ({ thread }) => {
         </div>
 
         <div className="flex gap-4 py-4">
-          <Heart size={22} />
+          <Heart onClick={toggleLike} size={22} />
           <MessageCircle size={22} />
           <Repeat size={22} />
           <Send size={22} />
