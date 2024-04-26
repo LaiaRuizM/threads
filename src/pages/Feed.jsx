@@ -59,6 +59,11 @@ const Feed = () => {
     fileRef.current.click();
   };
 
+  const handleFileChange = async e => {
+    const fileObj = e.target.files && e.target.files[0];
+    console.log("handleFileChange:", fileObj);
+  };
+
   return (
     <div className="container mx-auto max-w-[600px]">
       <div className="p-4">
@@ -73,7 +78,12 @@ const Feed = () => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
 
-          <input style={{ display: "none" }} type="file" ref={fileRef} />
+          <input
+            style={{ display: "none" }}
+            type="file"
+            ref={fileRef}
+            onChange={handleFileChange}
+          />
 
           <div className="flex justify-between items-center border-y py-2  border-[rgba(49,49,50,1)]">
             <Image onClick={handleClick} className="cursor-pointer" size={24} />
