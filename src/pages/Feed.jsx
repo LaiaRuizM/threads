@@ -8,8 +8,7 @@ import {
   COLLECTION_ID_THREADS,
   BUCKET_ID_IMAGES,
 } from "../appwriteConfig";
-// import { Query } from "appwrite";
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 
 const Feed = () => {
   const [threads, setThreads] = useState([]);
@@ -25,8 +24,8 @@ const Feed = () => {
   const getThreads = async () => {
     const response = await database.listDocuments(
       DEV_DB_ID,
-      COLLECTION_ID_THREADS
-      // [Query.orderDesc("$createdAt")]
+      COLLECTION_ID_THREADS,
+      [Query.orderDesc("$createdAt")]
     );
     console.log("response feed:", response);
     setThreads(response.documents);
