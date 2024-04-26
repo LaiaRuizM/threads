@@ -1,7 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { Image } from "react-feather";
 import Thread from "../components/Thread";
-import { database, DEV_DB_ID, COLLECTION_ID_THREADS } from "../appwriteConfig";
+import {
+  database,
+  DEV_DB_ID,
+  COLLECTION_ID_THREADS,
+  BUCKET_ID_IMAGES,
+} from "../appwriteConfig";
 // import { Query } from "appwrite";
 import { ID } from "appwrite";
 
@@ -61,7 +66,19 @@ const Feed = () => {
 
   const handleFileChange = async e => {
     const fileObj = e.target.files && e.target.files[0];
-    console.log("handleFileChange:", fileObj);
+    console.log("fileObj:", fileObj);
+
+    if (!fileObj) {
+      return;
+    }
+
+    const response = await storage.createFile(
+      BUCKET_ID_IMAGES,
+      ID.unique(),
+      fileObj
+    );
+
+    console.log("FILE:", response);
   };
 
   return (
