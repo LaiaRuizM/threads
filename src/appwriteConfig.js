@@ -12,4 +12,5 @@ client.setEndpoint(VITE_ENDPOINT).setProject(PROJECT_ID);
 
 export const database = new Databases(client);
 export const functions = new Functions(client);
+export const storage = new Storage(client);
 export default client;
