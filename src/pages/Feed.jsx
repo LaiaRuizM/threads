@@ -55,7 +55,9 @@ const Feed = () => {
     setThreads(prevState => prevState.filter(item => item.$id !== threadId));
   };
 
-  const handleClick = async () => {};
+  const handleClick = async () => {
+    fileRef.current.click();
+  };
 
   return (
     <div className="container mx-auto max-w-[600px]">
