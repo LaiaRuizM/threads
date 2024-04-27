@@ -63,8 +63,31 @@ const Thread = ({ thread }) => {
     // window.location.reload();
   };
 
-  const toggleLike = () => {
+  const toggleLike = async () => {
     console.log("Liked toggled");
+
+    const users_who_liked = thread.users_who_liked;
+    const currentUserId = "65fa532446ea5da20a24"; //authenticated user
+
+    if (users_who_liked.includes(currentUserId)) {
+      const index = users_who_liked.indexOf(currentUserId);
+      users_who_liked.splice(index, 1);
+    } else {
+      users_who_liked.push(currentUserId);
+    }
+    const payload = {
+      users_who_liked: users_who_liked,
+      likes: users_who_liked.length,
+    };
+
+    const response = await database.updateDocument(
+      DEV_DB_ID,
+      COLLECTION_ID_THREADS,
+      thread.$id,
+      payload
+    );
+
+    console.log("Response likes:", response);
   };
 
   if (loading) return;
@@ -111,7 +134,7 @@ const Thread = ({ thread }) => {
         </div>
 
         <div className="flex gap-4 py-4">
-          <Heart onClick={toggleLike} size={22} />
+          <Heart onClick={toggleLike} size={22} className="cursor-pointer" />
           <MessageCircle size={22} />
           <Repeat size={22} />
           <Send size={22} />
@@ -135,7 +158,8 @@ Thread.propTypes = {
     image: PropTypes.string, //null
     $id: PropTypes.string.isRequired,
     setThreads: PropTypes.func,
-    likes: PropTypes.integer,
+    likes: PropTypes.number,
+    users_who_liked: PropTypes.array,
   }).isRequired,
 };
 
