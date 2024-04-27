@@ -28,6 +28,7 @@ const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
   // const [owner, setOwner] = useState(null);
   const [threadInstance, setThreadInstance] = useState(thread);
+  const currentUserId = "65fa532446ea5da20a24";
 
   useEffect(() => {
     //Get Owner information
@@ -135,7 +136,16 @@ const Thread = ({ thread }) => {
         </div>
 
         <div className="flex gap-4 py-4">
-          <Heart onClick={toggleLike} size={22} className="cursor-pointer" />
+          <Heart
+            onClick={toggleLike}
+            size={22}
+            className="cursor-pointer"
+            color={
+              threadInstance.users_who_liked.includes(currentUserId)
+                ? "#ff0000"
+                : "#fff"
+            }
+          />
           <MessageCircle size={22} />
           <Repeat size={22} />
           <Send size={22} />
