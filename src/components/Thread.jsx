@@ -27,6 +27,7 @@ TimeAgo.addLocale(en);
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
   // const [owner, setOwner] = useState(null);
+  const [threadInstance, setThreadInstance] = useState(thread);
 
   useEffect(() => {
     //Get Owner information
@@ -87,7 +88,7 @@ const Thread = ({ thread }) => {
       payload
     );
 
-    console.log("Response likes:", response);
+    setThreadInstance(response);
   };
 
   if (loading) return;
@@ -143,7 +144,9 @@ const Thread = ({ thread }) => {
         <div className="flex gap-4">
           <p className="text-[rgba(97,97,97,1)]">16 Replies</p>
           <p className="text-[rgba(97,97,97,1)]">·</p>
-          <p className="text-[rgba(97,97,97,1)]">{thread.likes} Likes</p>
+          <p className="text-[rgba(97,97,97,1)]">
+            {threadInstance.likes} Likes
+          </p>
         </div>
       </div>
     </div>
