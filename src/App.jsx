@@ -2,16 +2,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Feed from "./pages/feed";
 import Feed from "./pages/feed";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <div>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<Feed />} />
         </Routes>
-      </Router>
-    </div>
+      </AuthProvider>
+    </Router>
   );
 }
 
