@@ -14,9 +14,17 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async userInfo => {
     console.log("userInfo:", userInfo);
+
     try {
-      let response = await account.creat;
-    } catch (error) {}
+      let response = await account.createEmailSession(
+        userInfo.email,
+        userInfo.password
+      );
+      console.log("response:", response);
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
+
     console.log("setUser", setUser);
   };
   const contextData = {
