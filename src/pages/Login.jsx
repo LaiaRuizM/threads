@@ -1,25 +1,39 @@
 import { Link } from "react-router-dom";
-// import { useRef } from "react";
+import { useRef } from "react";
 
 const Login = () => {
-  //   const loginForm = useRef(null);
+  const loginForm = useRef(null);
   return (
-    <div>
-      <form action="">
-        <div>
+    <div className="container mx-auto max-w-[400px] rounded-md border border-[rgba(49,49,50,1)] p-4">
+      <form action="" ref={loginForm}>
+        <div className="py-2">
           <label htmlFor="">Email:</label>
-          <input type="email" name="email" />
+          <input
+            required
+            type="email"
+            name="email"
+            className="w-full p-2 rounded-sm"
+          />
         </div>
-        <div>
+        <div className="py-2">
           <label htmlFor="">Password:</label>
-          <input type="password" name="password" />
+          <input
+            required
+            type="password"
+            name="password"
+            className="w-full p-2 rounded-sm"
+          />
         </div>
-        <div>
-          <input type="submit" name="Login" />
+        <div className="py-2">
+          <input
+            type="submit"
+            name="Login"
+            className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer"
+          />
         </div>
       </form>
       <p>
-        Don&apos;t have an account? <Link to="/register" />
+        Don&apos;t have an account? <Link to="/register">Registrer</Link>
       </p>
     </div>
   );
