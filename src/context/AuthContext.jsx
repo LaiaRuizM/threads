@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect, useContext, Account } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { account } from "../appwriteConfig";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
@@ -13,6 +14,9 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async userInfo => {
     console.log("userInfo:", userInfo);
+    try {
+      let response = await account.creat;
+    } catch (error) {}
     console.log("setUser", setUser);
   };
   const contextData = {
