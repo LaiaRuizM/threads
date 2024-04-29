@@ -28,24 +28,32 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async userInfo => {
     try {
-      await account.deleteSession("current");
+      // await account.deleteSession("current");
 
-      let response = await account.createEmailPasswordSession(
+      const response = await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password
       );
 
       const accountDetails = await account.get();
       setUser(accountDetails);
-      navigate("/");
+      // navigate("/");
       console.log("response:", response);
     } catch (error) {
       console.log("ERROR:", error);
     }
   };
+
+  const logoutUser = async () => {
+    console.log("Logout clicked");
+    account.deleteSession("current");
+    setUser(null);
+    navigate("/login");
+  };
   const contextData = {
     user,
     loginUser,
+    logoutUser,
   };
   return (
     <AuthContext.Provider value={contextData}>
