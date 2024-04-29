@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { account } from "../appwriteConfig";
 import PropTypes from "prop-types";
 
@@ -8,24 +9,26 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(false);
   }, []);
 
   const loginUser = async userInfo => {
-    console.log("userInfo:", userInfo);
-
     try {
       let response = await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password
       );
+
+      const accountDetails = await account.get();
+      setUser(accountDetails);
+      navigate("/");
       console.log("response:", response);
     } catch (error) {
       console.log("ERROR:", error);
     }
-
-    console.log("setUser", setUser);
   };
   const contextData = {
     user,
