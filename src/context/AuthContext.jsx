@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async () => {
     console.log("Logout clicked");
-    account.deleteSession("current");
+    await account.deleteSession("current");
     setUser(null);
     navigate("/login");
   };
