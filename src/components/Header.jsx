@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
@@ -14,9 +15,11 @@ const Header = () => {
           </button>
         </div>
       ) : (
-        <button className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer">
+        <Link
+          to="/login"
+          className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer">
           Login
-        </button>
+        </Link>
       )}
     </div>
   );

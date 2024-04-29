@@ -21,6 +21,7 @@ const Login = () => {
     const password = loginForm.current.password.value;
 
     loginUser({ email, password });
+    navigate("/");
   };
   return (
     <div className="container mx-auto max-w-[400px] rounded-md border border-[rgba(49,49,50,1)] p-4">
