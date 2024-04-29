@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async userInfo => {
     try {
+      await account.deleteSession("current");
+
       let response = await account.createEmailPasswordSession(
         userInfo.email,
         userInfo.password
