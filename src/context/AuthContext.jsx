@@ -12,8 +12,19 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(false);
+    // setLoading(false);
+    getUserOnLoad();
   }, []);
+
+  const getUserOnLoad = async () => {
+    try {
+      let accountDetails = await account.get();
+      setUser(accountDetails);
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
+    setLoading(false);
+  };
 
   const loginUser = async userInfo => {
     try {
