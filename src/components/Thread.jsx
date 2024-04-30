@@ -16,6 +16,7 @@ import {
   DEV_DB_ID,
   COLLECTION_ID_PROFILES,
 } from "../appwriteConfig";
+import { Link } from "react-router-dom";
 
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
@@ -108,12 +109,14 @@ const Thread = ({ thread }) => {
 
   return (
     <div className="flex p-4">
-      <img
-        className="w-10 h-10 rounded-full object-cover"
-        src={owner.profile_pic}
-        // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
-        alt=""
-      />
+      <Link to={`/profile/${owner.$id}`}>
+        <img
+          className="w-10 h-10 rounded-full object-cover"
+          src={owner.profile_pic}
+          // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
+          alt=""
+        />
+      </Link>
       <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
         {/* Thread header*/}
         <div className="flex justify-between gap-2">

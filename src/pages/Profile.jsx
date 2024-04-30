@@ -8,8 +8,9 @@ const Profile = () => {
   const params = useParams();
 
   useEffect(() => {
-    getThreads();
-  });
+    console.log("params:", params);
+    // getThreads();
+  }, []);
 
   //   const getThreads = async () => {
   //     const response = await database.listDocuments(
