@@ -13,7 +13,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  // const [userProfile, setUserProfile] = useState(null);
 
   const navigate = useNavigate();
 
@@ -25,12 +24,17 @@ export const AuthProvider = ({ children }) => {
   const getUserOnLoad = async () => {
     try {
       let accountDetails = await account.get();
+
       const profile = await database.getDocument(
         DEV_DB_ID,
-        COLLECTION_ID_PROFILES
+        COLLECTION_ID_PROFILES,
+        accountDetails.$id
       );
-      accountDetails["profile"] = "TEST";
+      console.log("profile:", profile);
+
+      accountDetails["profile"] = profile;
       console.log(accountDetails);
+
       setUser(accountDetails);
     } catch (error) {
       console.log("ERROR:", error);
