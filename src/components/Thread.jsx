@@ -20,6 +20,7 @@ import en from "javascript-time-ago/locale/en";
 import ReactTimeAgo from "react-time-ago";
 
 import setThreads from "../pages/feed";
+import { useAuth } from "../context/AuthContext";
 
 // TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(en);
@@ -28,7 +29,7 @@ const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
   // const [owner, setOwner] = useState(null);
   const [threadInstance, setThreadInstance] = useState(thread);
-  const currentUserId = "65fa532446ea5da20a24";
+  const { user } = useAuth(); //user.$id -> authenticated user
 
   useEffect(() => {
     //Get Owner information
@@ -69,13 +70,12 @@ const Thread = ({ thread }) => {
     console.log("Liked toggled");
 
     const users_who_liked = thread.users_who_liked;
-    const currentUserId = "65fa532446ea5da20a24"; //authenticated user
 
-    if (users_who_liked.includes(currentUserId)) {
-      const index = users_who_liked.indexOf(currentUserId);
+    if (users_who_liked.includes(user.$id)) {
+      const index = users_who_liked.indexOf(user.$id);
       users_who_liked.splice(index, 1);
     } else {
-      users_who_liked.push(currentUserId);
+      users_who_liked.push(user.$id);
     }
     const payload = {
       users_who_liked: users_who_liked,
@@ -141,7 +141,7 @@ const Thread = ({ thread }) => {
             size={22}
             className="cursor-pointer"
             color={
-              threadInstance.users_who_liked.includes(currentUserId)
+              threadInstance.users_who_liked.includes(user.$id)
                 ? "#ff0000"
                 : "#fff"
             }
