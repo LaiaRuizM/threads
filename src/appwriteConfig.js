@@ -7,6 +7,7 @@ export const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
 export const DEV_DB_ID = import.meta.env.VITE_DB_ID;
 export const COLLECTION_ID_THREADS = import.meta.env.VITE_COLLECTION_ID_THREADS;
 export const BUCKET_ID_IMAGES = import.meta.env.VITE_BUCKET_ID_IMAGES;
+//export const EXECUTION_METHOD = import.meta.env.VITE_EXECUTION_METHOD;
 
 export const COLLECTION_ID_PROFILES = "663011060020bae47a1d";
 

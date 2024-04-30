@@ -11,8 +11,10 @@ import {
 import {
   functions,
   database,
+  // EXECUTION_METHOD,
   COLLECTION_ID_THREADS,
   DEV_DB_ID,
+  COLLECTION_ID_PROFILES,
 } from "../appwriteConfig";
 
 import TimeAgo from "javascript-time-ago";
@@ -27,7 +29,7 @@ TimeAgo.addLocale(en);
 
 const Thread = ({ thread }) => {
   const [loading, setLoading] = useState(true);
-  // const [owner, setOwner] = useState(null);
+  const [owner, setOwner] = useState(null);
   const [threadInstance, setThreadInstance] = useState(thread);
   const { user } = useAuth(); //user.$id -> authenticated user
 
@@ -40,20 +42,30 @@ const Thread = ({ thread }) => {
   const getUserInfo = async () => {
     const payload = {
       owner_id: thread.owner_id,
+      // name: thread.name,
     };
 
     const response = await functions.createExecution(
-      "65fcd9a01714d2327a1d",
+      "65fcd9a01714d2327a1d", //Function ID
       JSON.stringify(payload)
+      // EXECUTION_METHOD
     );
+    const profile = await database.getDocument(
+      DEV_DB_ID,
+      COLLECTION_ID_PROFILES,
+      thread.owner_id
+    );
+    console.log("profile:", profile);
 
-    console.log("response thread:", response);
+    // console.log("response thread:", response);
 
     // const userData = JSON.parse(response.response);
+    const userData = response;
+    userData["profile_pic"] = profile.profile_pic;
 
     // console.log("GET USER REP:", response);
     // console.log("GET USER REP:", userData);
-    // setOwner(userData);
+    setOwner(userData);
     setLoading(false);
   };
 
@@ -98,15 +110,15 @@ const Thread = ({ thread }) => {
     <div className="flex p-4">
       <img
         className="w-10 h-10 rounded-full object-cover"
-        // src={owner.profile_pic}
-        src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
+        src={owner.profile_pic}
+        // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
         alt=""
       />
       <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
         {/* Thread header*/}
         <div className="flex justify-between gap-2">
-          <strong>{thread.owner_id}</strong>
           {/* <strong>{owner.name}</strong> */}
+          <strong>{user.name}</strong>
 
           <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
@@ -173,6 +185,7 @@ Thread.propTypes = {
     setThreads: PropTypes.func,
     likes: PropTypes.number,
     users_who_liked: PropTypes.array,
+    name: PropTypes.string,
   }).isRequired,
 };
 
