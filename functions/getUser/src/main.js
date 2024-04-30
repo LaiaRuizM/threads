@@ -5,7 +5,8 @@ export default async ({ req, res, log, error }) => {
   // Why not try the Appwrite SDK?
   const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('<PROJECT_ID>')
+    // .setProject('<PROJECT_ID>')
+    .setProject(req.variables["APPWRITE_FUNCTION_PROJECT_ID"])
     // .setProject(import.meta.env.APPWRITE_PROJECT_ID)
     .setKey('[API_KEY]');
   
@@ -38,7 +39,7 @@ let payload;
   // console.log('response:', response);
 
   if (payload && payload.owner_id) {
-  const response = await users.get(payload.owner_id);
+  const response = await users.get(payload["owner_id"]); //This method only works on a server-side SDK
   console.log('response main:', response);
 
   //object to avoid some unnecesary info:
