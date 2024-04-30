@@ -9,11 +9,14 @@ import {
   BUCKET_ID_IMAGES,
 } from "../appwriteConfig";
 import { ID, Query } from "appwrite";
+import { useAuth } from "../context/AuthContext";
 
 const Feed = () => {
   const [threads, setThreads] = useState([]);
   const [threadBody, setThreadBody] = useState("");
   const [threadImg, setThreadImg] = useState(null);
+
+  const { user } = useAuth();
 
   const fileRef = useRef(null);
 
@@ -36,7 +39,7 @@ const Feed = () => {
     e.preventDefault();
 
     const payload = {
-      owner_id: "65fa532446ea5da20a24",
+      owner_id: user.$id,
       body: threadBody,
       image: threadImg,
       // image: null,
