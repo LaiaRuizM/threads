@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { account } from "../appwriteConfig";
+import {
+  COLLECTION_ID_PROFILES,
+  DEV_DB_ID,
+  account,
+  database,
+} from "../appwriteConfig";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
@@ -8,6 +13,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  // const [userProfile, setUserProfile] = useState(null);
 
   const navigate = useNavigate();
 
@@ -19,6 +25,12 @@ export const AuthProvider = ({ children }) => {
   const getUserOnLoad = async () => {
     try {
       let accountDetails = await account.get();
+      const profile = await database.getDocument(
+        DEV_DB_ID,
+        COLLECTION_ID_PROFILES
+      );
+      accountDetails["profile"] = "TEST";
+      console.log(accountDetails);
       setUser(accountDetails);
     } catch (error) {
       console.log("ERROR:", error);
