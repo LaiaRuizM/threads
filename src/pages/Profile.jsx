@@ -45,7 +45,7 @@ const Profile = () => {
   if (loading) return;
   return (
     <div className="container mx-auto max-w-[600px]">
-      <div className="grid grid-cols-2 items-start justify-between">
+      <div className="flex justify-between">
         <div className="py-4">
           <h3 className="text-3xl font-bold ">{userProfile.username}</h3>
           <p>{userProfile.username}</p>
