@@ -42,27 +42,42 @@ const Profile = () => {
     setLoading(false);
   };
 
+  const toggleFollow = async () => {};
+
   if (loading) return;
   return (
     <div className="container mx-auto max-w-[600px]">
-      <div className="flex justify-between">
+      <div className="flex justify-between my-10">
         <div className="py-4">
           <h3 className="text-3xl font-bold ">{userProfile.username}</h3>
           <p>{userProfile.username}</p>
 
-          <div className="py-4">{userProfile.bio}</div>
+          <div className="py-6">{userProfile.bio}</div>
 
-          <div>
-            <p>{userProfile.follower_count} followers</p>
+          <div className="flex gap-2">
+            <p className="text-[rgba(97,97,97,1)]">
+              {userProfile.follower_count} followers
+            </p>
+            {userProfile.link && (
+              <>
+                <p className="text-[rgba(97,97,97,1)]">·</p>
+                <a href={userProfile.link} className="text-[rgba(97,97,97,1)]">
+                  {userProfile.link}
+                </a>{" "}
+              </>
+            )}
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col justify-between">
           <img
             className="w-20 h-20 rounded-full object-cover"
             src={userProfile.profile_pic}
             alt=""
           />
+          <button className="bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer">
+            Follow
+          </button>
         </div>
       </div>
       <div>
