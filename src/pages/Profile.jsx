@@ -45,11 +45,18 @@ const Profile = () => {
   if (loading) return;
   return (
     <div className="container mx-auto max-w-[600px]">
-      <div>
-        <div>
-          <h3 className="text-2xl">{userProfile.username}</h3>
+      <div className="grid grid-cols-2 items-start justify-between">
+        <div className="py-4">
+          <h3 className="text-3xl font-bold ">{userProfile.username}</h3>
           <p>{userProfile.username}</p>
+
+          <div className="py-4">{userProfile.bio}</div>
+
+          <div>
+            <p>{userProfile.follower_count} followers</p>
+          </div>
         </div>
+
         <div>
           <img
             className="w-20 h-20 rounded-full object-cover"
