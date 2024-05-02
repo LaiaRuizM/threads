@@ -124,7 +124,7 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between items-center">
           <img
             className="w-20 h-20 rounded-full object-cover"
             src={userProfile.profile_pic}
