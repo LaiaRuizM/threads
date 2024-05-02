@@ -48,6 +48,7 @@ const Profile = () => {
     console.log("Follow toggled...");
 
     const following = user.following; //people that we're following
+    const followers = userProfile.followers;
 
     if (following.includes(userProfile.$id)) {
       //userProfile -> current id
@@ -56,6 +57,44 @@ const Profile = () => {
     } else {
       following.push(userProfile.$id);
     }
+
+    if (followers.includes(user.$id)) {
+      //userProfile -> current id
+      const index = followers.indexOf(user.$id);
+      followers.splice(index, 1);
+    } else {
+      followers.push(user.$id);
+    }
+
+    //Update both users
+    const payload1 = {
+      following: following,
+    };
+
+    const payload2 = {
+      followers: followers,
+      follow_count: followers.length,
+    };
+
+    //update doc - response 1 is going to update our user
+    const response1 = await database.updateDocument(
+      DEV_DB_ID,
+      COLLECTION_ID_PROFILES,
+      user.$id,
+      payload1
+    );
+
+    console.log("response1:", response1);
+    //update doc - response 2 is going to update our userProfile
+
+    const response2 = await database.updateDocument(
+      DEV_DB_ID,
+      COLLECTION_ID_PROFILES,
+      userProfile.$id,
+      payload2
+    );
+
+    console.log("response2:", response2);
   };
 
   if (loading) return;
