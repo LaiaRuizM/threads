@@ -130,11 +130,19 @@ const Profile = () => {
             src={userProfile.profile_pic}
             alt=""
           />
-          <button
-            onClick={toggleFollow}
-            className="bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer">
-            Follow
-          </button>
+          {user.profile.following.includes(userProfile.$id) ? (
+            <button
+              onClick={toggleFollow}
+              className="text-white py-2 px-4 border border-[#fff] text-sm border-black rounded-full cursor-pointer">
+              Following
+            </button>
+          ) : (
+            <button
+              onClick={toggleFollow}
+              className="bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer">
+              Follow
+            </button>
+          )}
         </div>
       </div>
       <div>
