@@ -8,8 +8,10 @@ import {
 } from "../appwriteConfig";
 import { Query } from "appwrite";
 import Thread from "../components/Thread";
+import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [threads, setThreads] = useState([]);
   const [userProfile, setUserProfile] = useState(null);
@@ -44,6 +46,16 @@ const Profile = () => {
 
   const toggleFollow = async () => {
     console.log("Follow toggled...");
+
+    const following = user.following; //people that we're following
+
+    if (following.includes(userProfile.$id)) {
+      //userProfile -> current id
+      const index = following.indexOf(userProfile.$id);
+      following.splice(index, 1);
+    } else {
+      following.push(userProfile.$id);
+    }
   };
 
   if (loading) return;

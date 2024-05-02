@@ -90,6 +90,7 @@ const Thread = ({ thread }) => {
     } else {
       users_who_liked.push(user.$id);
     }
+
     const payload = {
       users_who_liked: users_who_liked,
       likes: users_who_liked.length,
