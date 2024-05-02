@@ -42,7 +42,9 @@ const Profile = () => {
     setLoading(false);
   };
 
-  const toggleFollow = async () => {};
+  const toggleFollow = async () => {
+    console.log("Follow toggled...");
+  };
 
   if (loading) return;
   return (
@@ -75,7 +77,9 @@ const Profile = () => {
             src={userProfile.profile_pic}
             alt=""
           />
-          <button className="bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer">
+          <button
+            onClick={toggleFollow}
+            className="bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer">
             Follow
           </button>
         </div>
