@@ -123,7 +123,7 @@ const Thread = ({ thread }) => {
         {/* Thread header*/}
         <div className="flex justify-between gap-2">
           {/* <strong>{owner.name}</strong> */}
-          <strong>{user.name}</strong>
+          <strong> FIX IT! {owner.username}</strong>
 
           <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
@@ -190,7 +190,7 @@ Thread.propTypes = {
     setThreads: PropTypes.func,
     likes: PropTypes.number,
     users_who_liked: PropTypes.array,
-    name: PropTypes.string,
+    username: PropTypes.string,
   }).isRequired,
 };
 

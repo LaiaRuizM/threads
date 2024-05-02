@@ -10,6 +10,8 @@ export const BUCKET_ID_IMAGES = import.meta.env.VITE_BUCKET_ID_IMAGES;
 //export const EXECUTION_METHOD = import.meta.env.VITE_EXECUTION_METHOD;
 
 export const COLLECTION_ID_PROFILES = "663011060020bae47a1d";
+// export const COLLECTION_ID_PROFILES = import.meta.env
+//   .VITE_COLLECTION_ID_PROFILES;
 
 client.setEndpoint(VITE_ENDPOINT).setProject(PROJECT_ID);
 

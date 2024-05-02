@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import PropTypes from "prop-types";
 
 const Header = () => {
   const { user, logoutUser } = useAuth();
@@ -27,6 +28,10 @@ const Header = () => {
       )}
     </div>
   );
+};
+
+Header.propTypes = {
+  profile_pic: PropTypes.func,
 };
 
 export default Header;
