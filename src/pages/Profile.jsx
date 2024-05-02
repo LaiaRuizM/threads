@@ -47,7 +47,7 @@ const Profile = () => {
   const toggleFollow = async () => {
     console.log("Follow toggled...");
 
-    const following = user.following; //people that we're following
+    const following = user.profile.following; //people that we're following
     const followers = userProfile.followers;
 
     if (following.includes(userProfile.$id)) {
