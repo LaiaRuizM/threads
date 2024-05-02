@@ -71,9 +71,11 @@ const Profile = () => {
       following: following,
     };
 
+    console.log("payload1:", payload1);
+
     const payload2 = {
       followers: followers,
-      follow_count: followers.length,
+      follower_count: followers.length,
     };
 
     //update doc - response 1 is going to update our user
