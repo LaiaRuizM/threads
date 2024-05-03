@@ -110,7 +110,7 @@ const Thread = ({ thread }) => {
 
   return (
     <div className="flex p-4">
-      <Link to={`/profile/${owner.id}`}>
+      <Link to={`/profile/${owner.$id}`}>
         <img
           className="w-10 h-10 rounded-full object-cover"
           src={owner.profile_pic}
