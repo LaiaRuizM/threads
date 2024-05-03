@@ -27,7 +27,7 @@ const Feed = () => {
   const getThreads = async () => {
     const following = user.profile.following;
     console.log("following:", following);
-    //const feedPosts = [];
+    let feedPosts = [];
 
     for (let i = 0; following.length > i; i++) {
       console.log("following[i].$id");
@@ -40,8 +40,9 @@ const Feed = () => {
           Query.limit(1), //one item - return an array
         ]
       );
-      console.log("response:", response);
+      feedPosts = [...feedPosts, following[i]];
     }
+    console.log("feedPosts:", feedPosts);
 
     // const response = await database.listDocuments(
     //         DEV_DB_ID,
