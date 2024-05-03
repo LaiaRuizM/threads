@@ -37,7 +37,7 @@ const Feed = () => {
         [
           Query.orderDesc("$createdAt"),
           Query.equal("owner_id", following[i]),
-          Query.limit(1), //one item - return an array
+          Query.limit(4), //one item - return an array
         ]
       );
       feedPosts = [...feedPosts, ...response.documents];
@@ -50,7 +50,7 @@ const Feed = () => {
       [
         Query.orderDesc("$createdAt"),
         Query.equal("owner_id", user.$id), // user.$id -> own id
-        Query.limit(1),
+        Query.limit(2),
       ]
     );
     feedPosts = [...feedPosts, ...response.documents];

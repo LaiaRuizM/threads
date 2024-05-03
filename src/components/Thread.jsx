@@ -110,7 +110,7 @@ const Thread = ({ thread }) => {
 
   return (
     <div className="flex p-4">
-      <Link to={`/profile/${owner.$id}`}>
+      <Link to={`/profile/${thread.owner_id}`}>
         <img
           className="w-10 h-10 rounded-full object-cover"
           src={owner.profile_pic}
@@ -122,8 +122,8 @@ const Thread = ({ thread }) => {
       <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
         {/* Thread header*/}
         <div className="flex justify-between gap-2">
-          {/* <strong>{owner.name}</strong> */}
-          <strong> FIX IT! {owner.username}</strong>
+          {/* <strong>{user.name}</strong> */}
+          <strong> FIX IT! {owner.name} </strong>
 
           <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
@@ -186,7 +186,7 @@ Thread.propTypes = {
     owner_id: PropTypes.string.isRequired,
     $createdAt: PropTypes.string.isRequired,
     image: PropTypes.string, //null
-    $id: PropTypes.string.isRequired,
+    $id: PropTypes.string,
     setThreads: PropTypes.func,
     likes: PropTypes.number,
     users_who_liked: PropTypes.array,
