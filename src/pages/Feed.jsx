@@ -42,6 +42,18 @@ const Feed = () => {
       );
       feedPosts = [...feedPosts, ...response.documents];
     }
+
+    //Add our own post to the feed
+    let response = await database.listDocuments(
+      DEV_DB_ID,
+      COLLECTION_ID_THREADS,
+      [
+        Query.orderDesc("$createdAt"),
+        Query.equal("owner_id", user.$id), // user.$id -> own id
+        Query.limit(1),
+      ]
+    );
+    feedPosts = [...feedPosts, ...response.documents];
     console.log("feedPosts:", feedPosts);
     setThreads(feedPosts);
 
