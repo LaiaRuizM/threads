@@ -15,18 +15,18 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [threads, setThreads] = useState([]);
   const [userProfile, setUserProfile] = useState(null);
-  const { id } = useParams();
+  const { username } = useParams(); // username instead of id
 
   useEffect(() => {
     getThreads();
     getProfile();
   }, []);
 
-  const getThreads = async () => {
+  const getThreads = async owner_id => {
     const response = await database.listDocuments(
       DEV_DB_ID,
       COLLECTION_ID_THREADS,
-      [Query.orderDesc("$createdAt"), Query.equal("owner_id", id)]
+      [Query.orderDesc("$createdAt"), Query.equal("owner_id", owner_id)] //userProfile.$id instead of id
     );
     console.log("response profile:", response);
     setThreads(response.documents);
@@ -34,14 +34,20 @@ const Profile = () => {
   };
 
   const getProfile = async () => {
-    const data = await database.getDocument(
+    const data = await database.listDocuments(
+      //instead of getDocuments
       DEV_DB_ID,
       COLLECTION_ID_PROFILES,
-      id
+      [
+        //username // username instead of id
+        Query.equal("username", username),
+        Query.limit(1),
+      ]
     );
-    console.log(data);
-    setUserProfile(data);
-    setLoading(false);
+    console.log("data:", data);
+    // getThreads(data.$id);
+    // setUserProfile(data);
+    //setLoading(false);
   };
 
   const toggleFollow = async () => {

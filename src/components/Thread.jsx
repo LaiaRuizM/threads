@@ -44,6 +44,7 @@ const Thread = ({ thread }) => {
     const payload = {
       owner_id: thread.owner_id,
       // name: thread.name,
+      // name: thread.name,
     };
 
     const response = await functions.createExecution(
@@ -63,6 +64,7 @@ const Thread = ({ thread }) => {
     // const userData = JSON.parse(response.response);
     const userData = response;
     userData["profile_pic"] = profile.profile_pic;
+    userData["username"] = profile.username;
 
     // console.log("GET USER REP:", response);
     // console.log("GET USER REP:", userData);
@@ -110,7 +112,8 @@ const Thread = ({ thread }) => {
 
   return (
     <div className="flex p-4">
-      <Link to={`/profile/${thread.owner_id}`}>
+      <Link to={`/profile/${owner.username}`}>
+        {/* thread.owner_id */}
         <img
           className="w-10 h-10 rounded-full object-cover"
           src={owner.profile_pic}
@@ -191,6 +194,7 @@ Thread.propTypes = {
     likes: PropTypes.number,
     users_who_liked: PropTypes.array,
     username: PropTypes.string,
+    // name: PropTypes.string,
   }).isRequired,
 };
 
