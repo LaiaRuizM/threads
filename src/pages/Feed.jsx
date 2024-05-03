@@ -40,7 +40,7 @@ const Feed = () => {
           Query.limit(1), //one item - return an array
         ]
       );
-      feedPosts = [...feedPosts, response.documents];
+      feedPosts = [...feedPosts, ...response.documents];
     }
     console.log("feedPosts:", feedPosts);
     setThreads(feedPosts);
