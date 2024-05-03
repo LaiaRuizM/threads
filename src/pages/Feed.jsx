@@ -25,6 +25,12 @@ const Feed = () => {
   }, []);
 
   const getThreads = async () => {
+    /* 
+    1 - Get following ids* 
+    2 - Get Profiles
+    3 - Get their latest post
+    4 -  Add additional post if necessary
+     */
     const response = await database.listDocuments(
       DEV_DB_ID,
       COLLECTION_ID_THREADS,
