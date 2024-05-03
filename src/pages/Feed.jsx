@@ -34,7 +34,11 @@ const Feed = () => {
       let response = await database.listDocuments(
         DEV_DB_ID,
         COLLECTION_ID_THREADS,
-        [Query.orderDesc("$createdAt"), Query.equal("owner_id", following[i])]
+        [
+          Query.orderDesc("$createdAt"),
+          Query.equal("owner_id", following[i]),
+          Query.limit(1), //one item - return an array
+        ]
       );
       console.log("response:", response);
     }
