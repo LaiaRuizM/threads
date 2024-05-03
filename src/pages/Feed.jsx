@@ -40,9 +40,10 @@ const Feed = () => {
           Query.limit(1), //one item - return an array
         ]
       );
-      feedPosts = [...feedPosts, following[i]];
+      feedPosts = [...feedPosts, response.documents];
     }
     console.log("feedPosts:", feedPosts);
+    setThreads(feedPosts);
 
     // const response = await database.listDocuments(
     //         DEV_DB_ID,
@@ -65,7 +66,7 @@ const Feed = () => {
     //     [Query.orderDesc("$createdAt")]
     //   );
     //   console.log("response feed:", response);
-    //   setThreads(response.documents);
+    // setThreads(feedPosts);
     //   console.log(response.documents);
   };
 
