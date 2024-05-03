@@ -25,20 +25,46 @@ const Feed = () => {
   }, []);
 
   const getThreads = async () => {
+    const following = user.profile.following;
+    console.log("following:", following);
+    //const feedPosts = [];
+
+    for (let i = 0; following.length > i; i++) {
+      console.log("following[i].$id");
+      let response = await database.listDocuments(
+        DEV_DB_ID,
+        COLLECTION_ID_THREADS,
+        [
+          Query.orderDesc("$createdAt"),
+          Query.equal("owner_id", following[i].$id),
+        ]
+      );
+      console.log("response:", response);
+    }
+
+    // const response = await database.listDocuments(
+    //         DEV_DB_ID,
+    //         COLLECTION_ID_THREADS,
+    //         [
+    //           Query.orderDesc("$createdAt"),
+    //           Query.equal("owner_id", following[i].$id),
+    //         ])
+
     /* 
     1 - Get following ids* 
     2 - Get Profiles
     3 - Get their latest post
-    4 -  Add additional post if necessary
-     */
-    const response = await database.listDocuments(
-      DEV_DB_ID,
-      COLLECTION_ID_THREADS,
-      [Query.orderDesc("$createdAt")]
-    );
-    console.log("response feed:", response);
-    setThreads(response.documents);
-    console.log(response.documents);
+    4 -  Add additional post if necessary 
+    */
+
+    //   const response = await database.listDocuments(
+    //     DEV_DB_ID,
+    //     COLLECTION_ID_THREADS,
+    //     [Query.orderDesc("$createdAt")]
+    //   );
+    //   console.log("response feed:", response);
+    //   setThreads(response.documents);
+    //   console.log(response.documents);
   };
 
   const handleThreadSubmit = async e => {
