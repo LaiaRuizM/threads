@@ -167,7 +167,7 @@ const Thread = ({ thread }) => {
             }
           />
           <Link to={`/thread/${thread.$id}`}>
-            <MessageCircle size={22} />
+            <MessageCircle size={22} color={"#fff"} />
           </Link>
           <Repeat size={22} />
           <Send size={22} />
