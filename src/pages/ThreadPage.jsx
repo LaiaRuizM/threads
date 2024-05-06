@@ -1,7 +1,12 @@
 import Thread from "../components/Thread";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { database, DEV_DB_ID, COLLECTION_ID_COMMENTS } from "../appwriteConfig";
+import {
+  database,
+  DEV_DB_ID,
+  COLLECTION_ID_COMMENTS,
+  COLLECTION_ID_THREADS,
+} from "../appwriteConfig";
 import { ID } from "appwrite";
 import { useAuth } from "../context/AuthContext";
 
@@ -21,7 +26,7 @@ const ThreadPage = () => {
   const getThread = async () => {
     const response = await database.getDocument(
       DEV_DB_ID,
-      COLLECTION_ID_COMMENTS,
+      COLLECTION_ID_THREADS,
       id
     );
     setThread(response);
@@ -49,12 +54,6 @@ const ThreadPage = () => {
     setCommentBody("");
     //setCommentImg(null);
   };
-
-  // const handleDeleteThread = async threadId => {
-  //   await database.deleteDocument(DEV_DB_ID, COLLECTION_ID_THREADS, threadId);
-  //   console.log("Thread was deleted!");
-  //   setThreads(prevState => prevState.filter(item => item.$id !== threadId));
-  // };
 
   if (loading) return;
 
