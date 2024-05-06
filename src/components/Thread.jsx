@@ -145,15 +145,17 @@ const Thread = ({ thread }) => {
         </div>
 
         {/* Thread body*/}
-        <div className="py-4" style={{ whiteSpace: "pre-wrap" }}>
-          {thread.body}
-          {thread.image && (
-            <img
-              className="object-cover border border-[rgba(49,49,50,1)] rounded-md"
-              src={thread.image}
-            />
-          )}
-        </div>
+        <Link to={`/thread/${thread.$id}`}>
+          <div className="py-4 text-white" style={{ whiteSpace: "pre-wrap" }}>
+            {thread.body}
+            {thread.image && (
+              <img
+                className="object-cover border border-[rgba(49,49,50,1)] rounded-md"
+                src={thread.image}
+              />
+            )}
+          </div>
+        </Link>
 
         <div className="flex gap-4 py-4">
           <Heart
