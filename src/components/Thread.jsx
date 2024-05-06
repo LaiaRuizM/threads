@@ -127,7 +127,6 @@ const Thread = ({ thread }) => {
         <div className="flex justify-between gap-2">
           {/* <strong>{user.name}</strong> */}
           <strong> FIX IT! {owner.name} </strong>
-          <strong> FIX IT! {user.profile.username} </strong>
 
           <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
@@ -167,7 +166,9 @@ const Thread = ({ thread }) => {
                 : "#fff"
             }
           />
-          <MessageCircle size={22} />
+          <Link to={`/thread/${thread.$id}`}>
+            <MessageCircle size={22} />
+          </Link>
           <Repeat size={22} />
           <Send size={22} />
         </div>

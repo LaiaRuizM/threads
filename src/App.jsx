@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Feed from "./pages/feed";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import ThreadPage from "./pages/ThreadPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Feed />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/thread/:id" element={<ThreadPage />} />
         </Routes>
       </AuthProvider>
     </Router>
