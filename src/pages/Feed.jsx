@@ -10,6 +10,7 @@ import {
 } from "../appwriteConfig";
 import { ID, Query } from "appwrite";
 import { useAuth } from "../context/AuthContext";
+import PropTypes from "prop-types";
 
 const Feed = () => {
   const [threads, setThreads] = useState([]);
@@ -26,6 +27,7 @@ const Feed = () => {
 
   const getThreads = async () => {
     const following = user.profile.following;
+    //const following = user?.profile?.following || [];
     console.log("following:", following);
     let feedPosts = [];
 
@@ -179,6 +181,10 @@ const Feed = () => {
       ))}
     </div>
   );
+};
+
+Feed.propTypes = {
+  profile: PropTypes.func,
 };
 
 export default Feed;

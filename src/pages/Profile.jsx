@@ -108,7 +108,7 @@ const Profile = () => {
   if (loading) return;
   return (
     <>
-      <div>
+      <div className="w-full flex justify-between">
         <div className="py-4">
           <h3 className="text-3xl font-bold ">{userProfile.username}</h3>
           <p>{userProfile.username}</p>
@@ -132,7 +132,7 @@ const Profile = () => {
 
         <div className="flex flex-col justify-between items-center">
           <img
-            className="w-20 h-20 rounded-full object-cover"
+            className="w-16 h-16 rounded-full object-cover"
             src={userProfile.profile_pic}
             alt=""
           />
