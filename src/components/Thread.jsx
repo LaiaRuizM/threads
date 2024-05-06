@@ -127,6 +127,7 @@ const Thread = ({ thread }) => {
         <div className="flex justify-between gap-2">
           {/* <strong>{user.name}</strong> */}
           <strong> FIX IT! {owner.name} </strong>
+          <strong> FIX IT! {user.profile.username} </strong>
 
           <div className="flex justify-between gap-2 items-center cursor-pointer">
             {/* <p className="text-[rgba(97,97,97,1)]">3hrs ago</p> */}
