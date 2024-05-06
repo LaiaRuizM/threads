@@ -22,16 +22,18 @@ const Feed = () => {
   const fileRef = useRef(null);
 
   useEffect(() => {
+    // if (user !== undefined) {
     getThreads();
+    //}
   }, []);
 
   const getThreads = async () => {
-    const following = user.profile.following;
+    const following = user?.profile.following;
     //const following = user?.profile?.following || [];
     console.log("following:", following);
     let feedPosts = [];
 
-    for (let i = 0; following.length > i; i++) {
+    for (let i = 0; following?.length > i; i++) {
       console.log("following[i].$id");
       let response = await database.listDocuments(
         DEV_DB_ID,
@@ -51,7 +53,7 @@ const Feed = () => {
       COLLECTION_ID_THREADS,
       [
         Query.orderDesc("$createdAt"),
-        Query.equal("owner_id", user.$id), // user.$id -> own id
+        Query.equal("owner_id", user?.$id), // user.$id -> own id
         Query.limit(2),
       ]
     );

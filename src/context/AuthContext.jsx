@@ -46,7 +46,8 @@ export const AuthProvider = ({ children }) => {
     try {
       // await account.deleteSession("current");
 
-      const response = await account.createEmailPasswordSession(
+      const response = await account.createEmailSession(
+        //createEmailPasswordSession
         userInfo.email,
         userInfo.password
       );

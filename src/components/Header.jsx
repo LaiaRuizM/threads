@@ -12,7 +12,7 @@ const Header = () => {
 
       {user ? (
         <div className="flex items-center justify-center gap-4">
-          <Link to={`/profile/${user.profile.username}`}>
+          <Link to={`/profile/${user?.profile.username}`}>
             <img
               className="h-6 w-6 object-cover rounded-full"
               src={user.profile.profile_pic}
