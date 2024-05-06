@@ -44,10 +44,10 @@ const Profile = () => {
         Query.limit(1),
       ]
     );
-    console.log("data:", data);
-    // getThreads(data.$id);
-    // setUserProfile(data);
-    //setLoading(false);
+    console.log("data:", data.documents[0]);
+    getThreads(data.documents[0].$id);
+    setUserProfile(data.documents[0]);
+    setLoading(false);
   };
 
   const toggleFollow = async () => {
