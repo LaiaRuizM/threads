@@ -136,7 +136,7 @@ const Feed = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-[600px]">
+    <div>
       <div className="p-4">
         <form onSubmit={handleThreadSubmit}>
           <textarea

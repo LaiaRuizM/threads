@@ -108,7 +108,7 @@ const Profile = () => {
   if (loading) return;
   return (
     <>
-      <div className="flex justify-between my-10">
+      <div>
         <div className="py-4">
           <h3 className="text-3xl font-bold ">{userProfile.username}</h3>
           <p>{userProfile.username}</p>
