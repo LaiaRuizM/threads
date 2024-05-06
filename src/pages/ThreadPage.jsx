@@ -24,7 +24,7 @@ const ThreadPage = () => {
   if (loading) return;
 
   return (
-    <div className="container mx-auto max-w-[700px]">
+    <div className="container mx-auto max-w-[800px]">
       <Thread thread={thread} setThreads />
     </div>
   );
