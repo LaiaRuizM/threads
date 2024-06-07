@@ -9,6 +9,7 @@ import {
 } from "../appwriteConfig";
 import { ID } from "appwrite";
 import { useAuth } from "../context/AuthContext";
+import Comment from "../components/Comment";
 
 const ThreadPage = () => {
   const { id } = useParams();
@@ -16,6 +17,8 @@ const ThreadPage = () => {
 
   const [thread, setThread] = useState(null);
   const [commentBody, setCommentBody] = useState("");
+
+  const [comments, setComments] = useState();
 
   const { user } = useAuth();
 
@@ -81,6 +84,12 @@ const ThreadPage = () => {
             />
           </div>
         </form>
+      </div>
+
+      <div>
+        {comments.map(comment => (
+          <Comment key={comment.$id} comment={comment} />
+        ))}
       </div>
     </>
   );
