@@ -7,7 +7,7 @@ import {
   COLLECTION_ID_COMMENTS,
   COLLECTION_ID_THREADS,
 } from "../appwriteConfig";
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 import { useAuth } from "../context/AuthContext";
 import Comment from "../components/Comment";
 
@@ -56,6 +56,13 @@ const ThreadPage = () => {
     console.log("RESPONSE:", response);
     setCommentBody("");
     //setCommentImg(null);
+  };
+
+  const getComments = async () => {
+    const response = await database.listDocuments(
+      DEV_DB_ID,
+      COLLECTION_ID_COMMENTS
+    );
   };
 
   if (loading) return;
