@@ -18,12 +18,13 @@ const ThreadPage = () => {
   const [thread, setThread] = useState(null);
   const [commentBody, setCommentBody] = useState("");
 
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState([]);
 
   const { user } = useAuth();
 
   useEffect(() => {
     getThread();
+    getComments();
   }, []);
 
   const getThread = async () => {
@@ -58,11 +59,14 @@ const ThreadPage = () => {
     //setCommentImg(null);
   };
 
+  //getComments: to make a request and get all the comments to this thread
   const getComments = async () => {
     const response = await database.listDocuments(
       DEV_DB_ID,
-      COLLECTION_ID_COMMENTS
+      COLLECTION_ID_COMMENTS,
+      [[Query.orderDesc("$createdAt"), Query.equal("thread_id", id)]]
     );
+    console.log("response", response.documents);
   };
 
   if (loading) return;
