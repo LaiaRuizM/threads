@@ -54,11 +54,11 @@ const Comment = ({ comment }) => {
 
   return (
     <div className="flex p-4">
-      {/* <img
-          className="w-10 h-10 rounded-full object-cover"
-          src={owner.profile_pic}
-          // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
-        /> */}
+      <img
+        className="w-10 h-10 rounded-full object-cover"
+        src={owner.profile_pic}
+        // src="https://media.licdn.com/dms/image/D4D03AQFP5XYJUdkTsQ/profile-displayphoto-shrink_800_800/0/1670778116949?e=1715817600&v=beta&t=QcRpQ80IauDBs75MWuTLCScZd1fsBmMtiMbW1o_4ya0"
+      />
 
       <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
         {/* Thread Header */}
