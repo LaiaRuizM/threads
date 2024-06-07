@@ -56,6 +56,7 @@ const ThreadPage = () => {
 
     console.log("RESPONSE:", response);
     setCommentBody("");
+    setComments(prevState => [response, ...prevState]);
     //setCommentImg(null);
   };
 
@@ -66,7 +67,7 @@ const ThreadPage = () => {
       COLLECTION_ID_COMMENTS,
       [[Query.orderDesc("$createdAt"), Query.equal("thread_id", id)]]
     );
-    console.log("response", response.documents);
+    setComments(response.documents); //render those out
   };
 
   if (loading) return;

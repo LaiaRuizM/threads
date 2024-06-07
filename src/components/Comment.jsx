@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-import {
-  // MoreHorizontal,
-  Heart,
-  MessageCircle,
-  Repeat,
-  Send,
-  //Trash2,
-} from "react-feather";
+import { Link } from "react-router-dom";
+import // MoreHorizontal,
+// Heart,
+// MessageCircle,
+// Repeat,
+// Send,
+//Trash2,
+"react-feather";
 import {
   functions,
   database,
@@ -16,34 +16,39 @@ import {
   DEV_DB_ID,
   COLLECTION_ID_PROFILES,
 } from "../appwriteConfig";
-import { Link } from "react-router-dom";
-// import TimeAgo from "javascript-time-ago";
-// import en from "javascript-time-ago/locale/en";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 import ReactTimeAgo from "react-time-ago";
+TimeAgo.addLocale(en);
 
 const Comment = ({ comment }) => {
-  useEffect(() => {}, []);
+  const [owner, setOwner] = useState(null);
+  useEffect(() => {
+    // getUserInfo();
+  }, []);
 
   const getUserInfo = async () => {
     const payload = {
-      owner_id: thread.owner_id,
+      owner_id: comment.owner_id,
     };
 
     const response = await functions.createExecution(
       "65fcd9a01714d2327a1d", //Function ID
       JSON.stringify(payload)
     );
+
     const profile = await database.getDocument(
       DEV_DB_ID,
       COLLECTION_ID_PROFILES,
-      thread.owner_id
+      comment.owner_id
     );
+
     console.log("profile:", profile);
     const userData = response;
     userData["profile_pic"] = profile.profile_pic;
     userData["username"] = profile.username;
     setOwner(userData);
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
@@ -126,7 +131,6 @@ Comment.propTypes = {
     likes: PropTypes.number,
     users_who_liked: PropTypes.array,
     username: PropTypes.string,
-    // name: PropTypes.string,
   }).isRequired,
 };
 
