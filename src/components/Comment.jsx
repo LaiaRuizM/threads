@@ -11,8 +11,6 @@ import // MoreHorizontal,
 import {
   functions,
   database,
-  // EXECUTION_METHOD,
-  //COLLECTION_ID_THREADS,
   DEV_DB_ID,
   COLLECTION_ID_PROFILES,
 } from "../appwriteConfig";
@@ -22,9 +20,10 @@ import ReactTimeAgo from "react-time-ago";
 TimeAgo.addLocale(en);
 
 const Comment = ({ comment }) => {
+  const [loading, setLoading] = useState(true);
   const [owner, setOwner] = useState(null);
   useEffect(() => {
-    // getUserInfo();
+    getUserInfo();
   }, []);
 
   const getUserInfo = async () => {
@@ -48,8 +47,10 @@ const Comment = ({ comment }) => {
     userData["profile_pic"] = profile.profile_pic;
     userData["username"] = profile.username;
     setOwner(userData);
-    // setLoading(false);
+    setLoading(false);
   };
+
+  if (loading) return;
 
   return (
     <div className="flex p-4">
