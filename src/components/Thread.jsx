@@ -22,7 +22,7 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import ReactTimeAgo from "react-time-ago";
 
-import setThreads from "../pages/feed";
+import setThreads from "../pages/Feed";
 import { useAuth } from "../context/AuthContext";
 
 // TimeAgo.addDefaultLocale(en);
