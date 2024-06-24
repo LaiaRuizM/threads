@@ -32,6 +32,7 @@ const Login = () => {
             required
             type="email"
             name="email"
+            placeholder="Enter email..."
             className="w-full p-2 rounded-sm"
           />
         </div>
@@ -41,6 +42,7 @@ const Login = () => {
             required
             type="password"
             name="password"
+            placeholder="Enter password..."
             className="w-full p-2 rounded-sm"
           />
         </div>
