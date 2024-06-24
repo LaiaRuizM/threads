@@ -153,7 +153,7 @@ const Feed = () => {
               setThreadBody(e.target.value); //update body
             }}></textarea>
 
-          <img src={threadImg} alt="Thread image" />
+          {/* <img src={threadImg} alt="" /> */}
 
           <input
             style={{ display: "none" }}
