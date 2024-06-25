@@ -7,7 +7,8 @@ import {
   database,
 } from "../appwriteConfig";
 import PropTypes from "prop-types";
-import "../index.css";
+// import "../index.css";
+import { ClipLoader } from "react-spinners";
 
 const AuthContext = createContext();
 
@@ -105,7 +106,8 @@ export const AuthProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider value={contextData}>
-      {loading ? <div className="spinner"></div> : children}
+      {/* {loading ? <div className="spinner"></div> : children} */}
+      {loading ? <ClipLoader color="#000" size={40} /> : children}
     </AuthContext.Provider>
   );
 };
