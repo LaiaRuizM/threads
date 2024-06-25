@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const loginForm = useRef(null);
   const { loginUser, user } = useAuth();
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Allow us to redirect the user
 
   useEffect(() => {
     if (user) {
