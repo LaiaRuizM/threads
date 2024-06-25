@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const registerForm = useRef(null);
+  const { user, registerUser } = useAuth;
 
-  const { registerUser } = useAuth;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
