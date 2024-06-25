@@ -19,6 +19,7 @@ const Login = () => {
     const email = loginForm.current.email.value;
     const password = loginForm.current.password.value;
 
+    // const userInfo = { email, password }; loginUser(userInfo); -> We can mix them and put it as:
     loginUser({ email, password });
     navigate("/");
   };

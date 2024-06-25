@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // setLoading(false);
     getUserOnLoad();
   }, []);
 
@@ -58,9 +57,9 @@ export const AuthProvider = ({ children }) => {
       );
 
       let accountDetails = await account.get();
+      console.log("SESSION:", response);
       setUser(accountDetails);
       // navigate("/");
-      console.log("response:", response);
     } catch (error) {
       console.log("ERROR:", error);
     }

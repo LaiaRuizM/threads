@@ -17,6 +17,7 @@ export const COLLECTION_ID_COMMENTS = "663845260014f8dede7e";
 
 client.setEndpoint(VITE_ENDPOINT).setProject(PROJECT_ID);
 
+//Instances:
 export const account = new Account(client); // This is how we're going to authenticate register and so on with the users.
 export const database = new Databases(client);
 export const functions = new Functions(client);
