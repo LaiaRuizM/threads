@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserOnLoad = async () => {
     try {
-      let accountDetails = await account.get();
+      const accountDetails = await account.get();
 
       const profile = await database.getDocument(
         DEV_DB_ID,
