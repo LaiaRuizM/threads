@@ -43,22 +43,26 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginUser = async userInfo => {
+    setLoading(true);
+
+    console.log("userInfo", userInfo);
     try {
       // await account.deleteSession("current");
 
-      const response = await account.createEmailSession(
+      let response = await account.createEmailSession(
         //createEmailPasswordSession
         userInfo.email,
         userInfo.password
       );
 
-      const accountDetails = await account.get();
+      let accountDetails = await account.get();
       setUser(accountDetails);
       // navigate("/");
       console.log("response:", response);
     } catch (error) {
       console.log("ERROR:", error);
     }
+    setLoading(false);
   };
 
   const logoutUser = async () => {
@@ -67,10 +71,35 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     navigate("/login");
   };
+
+  const registerUser = async userInfo => {
+    setLoading(true);
+
+    try {
+      let response = await account.create(
+        COLLECTION_ID_PROFILES.unique(),
+        userInfo.email,
+        userInfo.password1,
+        userInfo.name
+      );
+
+      console.log("response:", response);
+
+      await account.createEmailSession(userInfo.email, userInfo.password1);
+      let accountDetails = await account.get();
+      setUser(accountDetails);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
+  };
+
   const contextData = {
     user,
     loginUser,
     logoutUser,
+    registerUser,
   };
   return (
     <AuthContext.Provider value={contextData}>
