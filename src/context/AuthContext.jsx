@@ -7,6 +7,7 @@ import {
   database,
 } from "../appwriteConfig";
 import PropTypes from "prop-types";
+import "../index.css";
 
 const AuthContext = createContext();
 
@@ -96,6 +97,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const contextData = {
+    //contextData -> object with the state that we pass down
     user,
     loginUser,
     logoutUser,
@@ -103,7 +105,7 @@ export const AuthProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider value={contextData}>
-      {loading ? <p>Loading...</p> : children}
+      {loading ? <div className="spinner"></div> : children}
     </AuthContext.Provider>
   );
 };
