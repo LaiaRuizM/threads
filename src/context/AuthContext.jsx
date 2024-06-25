@@ -116,6 +116,7 @@ AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+//Custom Hook
 export const useAuth = () => {
   return useContext(AuthContext);
 };
