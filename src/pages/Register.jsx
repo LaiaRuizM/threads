@@ -1,9 +1,31 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
+  const registerForm = useRef(null);
+
+  const { registerUser } = useAuth;
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const name = registerForm.current.name.value;
+    const email = registerForm.current.email.value;
+    const password1 = registerForm.current.password1.value;
+    const password2 = registerForm.current.password2.value;
+
+    if (password1 !== password2) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const userInfo = { name, email, password1, password2 };
+    registerUser(userInfo);
+  };
+
   return (
     <div className="container mx-auto max-w-[400px] rounded-md border border-[rgba(49,49,50,1)] p-4">
-      <form>
+      <form ref={registerForm} onSubmit={handleSubmit}>
         <div className="py-2">
           <label>Name:</label>
           <input
