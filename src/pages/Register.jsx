@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const registerForm = useRef(null);
-  const { user, registerUser } = useAuth;
+  const { user, registerUser } = useAuth();
 
   const navigate = useNavigate();
 
