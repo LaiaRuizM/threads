@@ -6,6 +6,7 @@ import {
   account,
   database,
 } from "../appwriteConfig";
+import { ID } from "appwrite"; // We need it to generate an user ID
 import PropTypes from "prop-types";
 // import "../index.css";
 import { ClipLoader } from "react-spinners";
@@ -77,8 +78,9 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
 
     try {
+      //Create an account:
       let response = await account.create(
-        COLLECTION_ID_PROFILES.unique(),
+        ID.unique(), // To create appwrite's user id
         userInfo.email,
         userInfo.password1,
         userInfo.name
@@ -89,6 +91,7 @@ export const AuthProvider = ({ children }) => {
       await account.createEmailSession(userInfo.email, userInfo.password1);
       let accountDetails = await account.get();
       setUser(accountDetails);
+
       navigate("/");
     } catch (error) {
       console.error(error);
