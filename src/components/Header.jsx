@@ -38,6 +38,7 @@ const Header = () => {
 
 Header.propTypes = {
   profile_pic: PropTypes.func,
+  username: PropTypes.string,
 };
 
 export default Header;

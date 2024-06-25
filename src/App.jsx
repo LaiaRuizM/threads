@@ -21,7 +21,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route element={<PrivateRoutes />}>
               {" "}
-              {/* PrivateRoutes will be the parent of all these child routes here. */}
+              {/* PrivateRoutes will be the parent of all these child routes here. Protect these two pages */}
               <Route path="/" element={<Feed />} />
               <Route path="/profile/:username" element={<Profile />} />
             </Route>
