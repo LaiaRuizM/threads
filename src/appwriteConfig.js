@@ -22,4 +22,5 @@ export const account = new Account(client); // This is how we're going to authen
 export const database = new Databases(client);
 export const functions = new Functions(client);
 export const storage = new Storage(client);
+export const result = await account.get();
 export default client;

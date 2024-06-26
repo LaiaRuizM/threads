@@ -14,3 +14,5 @@ MainLayout.propTypes = {
 };
 
 export default MainLayout;
+
+//   bg-red-500  border-4 border-yellow-500

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import PropTypes from "prop-types";
 
+//  bg-pink-500 border-4 border-green-500
 const Header = () => {
   const { user, logoutUser } = useAuth();
   return (
@@ -9,7 +10,6 @@ const Header = () => {
       <Link to={"/"}>
         <strong className="text-4xl text-white">@</strong>
       </Link>
-
       {user ? (
         <div className="flex items-center justify-center gap-4">
           <Link to={`/profile/${user?.profile.username}`}>

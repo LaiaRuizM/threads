@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
       console.log("response:", response);
 
-      await account.createEmailSession(userInfo.email, userInfo.password1);
+      // await account.createEmailSession(userInfo.email, userInfo.password1);
       let accountDetails = await account.get();
       setUser(accountDetails);
 
