@@ -26,7 +26,7 @@ const Register = () => {
     const profile_pic = registerForm.current.profile_pic.value;
 
     if (password1 !== password2) {
-      toast.alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
 
