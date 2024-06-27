@@ -12,7 +12,7 @@ const Register = () => {
     if (user) {
       navigate("/");
     }
-  }, []);
+  }, [user]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,13 +20,22 @@ const Register = () => {
     const email = registerForm.current.email.value;
     const password1 = registerForm.current.password1.value;
     const password2 = registerForm.current.password2.value;
+    const username = registerForm.current.username.value;
+    const profile_pic = registerForm.current.profile_pic.value;
 
     if (password1 !== password2) {
       alert("Passwords do not match!");
       return;
     }
 
-    const userInfo = { name, email, password1, password2 };
+    const userInfo = {
+      name,
+      email,
+      password1,
+      password2,
+      username,
+      profile_pic,
+    };
     registerUser(userInfo);
   };
 
@@ -71,6 +80,28 @@ const Register = () => {
             type="password"
             name="password2"
             placeholder="Confirm password..."
+            className="w-full p-2 rounded-sm"
+          />
+        </div>
+
+        <div className="py-2">
+          <label>Username:</label>
+          <input
+            required
+            type="text"
+            name="username"
+            placeholder="Enter username..."
+            className="w-full p-2 rounded-sm"
+          />
+        </div>
+
+        <div className="py-2">
+          <label>Profile Picture URL:</label>
+          <input
+            required
+            type="text"
+            name="profile_pic"
+            placeholder="Enter profile picture URL..."
             className="w-full p-2 rounded-sm"
           />
         </div>

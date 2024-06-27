@@ -95,10 +95,12 @@ export const AuthProvider = ({ children }) => {
         response.$id, // Use the user's ID as Document_ID
         {
           user_id: response.$id, // Use user's ID as user_id
+          profile_pic: userInfo.profile_pic, // Add profile_pic
+          username: userInfo.username, // Add username
         }
       );
 
-      //await account.createEmailSession(userInfo.email, userInfo.password1);
+      await account.createEmailSession(userInfo.email, userInfo.password1);
       let accountDetails = await account.get();
       setUser(accountDetails);
 
