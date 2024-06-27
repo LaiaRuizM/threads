@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+import toast from "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const registerForm = useRef(null);
@@ -24,7 +25,7 @@ const Register = () => {
     const profile_pic = registerForm.current.profile_pic.value;
 
     if (password1 !== password2) {
-      alert("Passwords do not match!");
+      toast.alert("Passwords do not match!");
       return;
     }
 
