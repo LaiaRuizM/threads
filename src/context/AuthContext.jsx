@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
-      await account.createEmailSession(userInfo.email, userInfo.password1);
+      //await account.createEmailSession(userInfo.email, userInfo.password1);
       let accountDetails = await account.get();
       setUser(accountDetails);
 

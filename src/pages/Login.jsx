@@ -49,7 +49,8 @@ const Login = () => {
         <div className="py-2">
           <input
             type="submit"
-            name="Login"
+            // name="Login"
+            value="Login"
             className="bg-white text-black py-2 px-4 border text-sm border-black rounded cursor-pointer"
           />
         </div>
