@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserOnLoad = async () => {
     try {
-      let accountDetails = await account.get();
+      const accountDetails = await account.get();
 
       let profile = await database.getDocument(
         DEV_DB_ID,
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async () => {
     console.log("Logout clicked");
-    //await account.deleteSession("current");
+    await account.deleteSession("current");
     setUser(null);
     navigate("/login");
   };
@@ -88,7 +88,17 @@ export const AuthProvider = ({ children }) => {
 
       console.log("response:", response);
 
-      // await account.createEmailSession(userInfo.email, userInfo.password1);
+      //Create the collection's document (after creating the account)
+      await database.createDocument(
+        DEV_DB_ID,
+        COLLECTION_ID_PROFILES,
+        response.$id, // Use the user's ID as Document_ID
+        {
+          user_id: response.$id, // Use user's ID as user_id
+        }
+      );
+
+      //await account.createEmailSession(userInfo.email, userInfo.password1);
       let accountDetails = await account.get();
       setUser(accountDetails);
 
