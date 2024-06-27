@@ -25,9 +25,9 @@ export const AuthProvider = ({ children }) => {
 
   const getUserOnLoad = async () => {
     try {
-      const accountDetails = await account.get();
+      let accountDetails = await account.get();
 
-      const profile = await database.getDocument(
+      let profile = await database.getDocument(
         DEV_DB_ID,
         COLLECTION_ID_PROFILES,
         accountDetails.$id
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // await account.deleteSession("current");
 
-      let response = await account.createEmailSession(
+      const response = await account.createEmailSession(
         //createEmailPasswordSession
         userInfo.email,
         userInfo.password
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async () => {
     console.log("Logout clicked");
-    await account.deleteSession("current");
+    //await account.deleteSession("current");
     setUser(null);
     navigate("/login");
   };

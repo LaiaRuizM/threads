@@ -38,7 +38,7 @@ const Header = () => {
 
 Header.propTypes = {
   profile_pic: PropTypes.func,
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
 };
 
 export default Header;
