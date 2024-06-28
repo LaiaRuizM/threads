@@ -51,6 +51,11 @@ const Profile = () => {
   };
 
   const toggleFollow = async () => {
+    if (user.$id === userProfile.$id) {
+      console.log("You cannot follow yourself!");
+      return;
+    }
+
     console.log("Follow toggled...");
 
     const following = user.profile.following; //people that we're following
