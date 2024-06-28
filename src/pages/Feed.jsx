@@ -33,6 +33,7 @@ const Feed = () => {
     console.log("following:", following);
     let feedPosts = [];
 
+    // Get posts from users we are following
     for (let i = 0; following?.length > i; i++) {
       console.log("following[i].$id");
       let response = await database.listDocuments(
@@ -41,13 +42,13 @@ const Feed = () => {
         [
           Query.orderDesc("$createdAt"),
           Query.equal("owner_id", following[i]),
-          Query.limit(4), //one item - return an array
+          Query.limit(4),
         ]
       );
       feedPosts = [...feedPosts, ...response.documents];
     }
 
-    //Add our own post to the feed
+    //Add our own post to the feed (ownPostsResponse)
     let response = await database.listDocuments(
       DEV_DB_ID,
       COLLECTION_ID_THREADS,

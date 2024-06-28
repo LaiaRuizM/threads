@@ -111,7 +111,7 @@ const Thread = ({ thread }) => {
   if (loading) return;
 
   return (
-    <div className="flex p-4">
+    <div className="flex p-4  bg-pink-500">
       <Link to={`/profile/${owner.username}`}>
         {/* thread.owner_id */}
         <img
@@ -122,7 +122,7 @@ const Thread = ({ thread }) => {
         />
       </Link>
 
-      <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]">
+      <div className="w-full px-2 pb-4 border-b border-[rgba(97,97,97,1)]  bg-green-500 border-4 border-blue-500">
         {/* Thread header*/}
         <div className="flex justify-between gap-2">
           {/* <strong>{user.name}</strong> */}
@@ -146,7 +146,9 @@ const Thread = ({ thread }) => {
 
         {/* Thread body*/}
         <Link to={`/thread/${thread.$id}`}>
-          <div className="py-4 text-white" style={{ whiteSpace: "pre-wrap" }}>
+          <div
+            className="py-4 text-white bg-red-500 border-4 border-white-500"
+            style={{ whiteSpace: "pre-wrap" }}>
             {thread.body}
             {thread.image && (
               <img

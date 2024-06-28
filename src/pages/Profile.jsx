@@ -41,7 +41,7 @@ const Profile = () => {
       [
         //username // username instead of id
         Query.equal("username", username),
-        Query.limit(1),
+        Query.limit(1), //one item - return an array
       ]
     );
     console.log("data:", data.documents[0]);
