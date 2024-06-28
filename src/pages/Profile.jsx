@@ -122,7 +122,11 @@ const Profile = () => {
             {userProfile.link && (
               <>
                 <p className="text-[rgba(97,97,97,1)]">·</p>
-                <a href={userProfile.link} className="text-[rgba(97,97,97,1)]">
+                <a
+                  href={userProfile.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[rgba(97,97,97,1)]">
                   {userProfile.link}
                 </a>{" "}
               </>
