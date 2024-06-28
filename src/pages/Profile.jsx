@@ -59,21 +59,25 @@ const Profile = () => {
     console.log("Follow toggled...");
 
     const following = user.profile.following; //people that we're following
-    const followers = userProfile.followers;
+    const followers = userProfile.followers; //people following the user profile
 
     if (following.includes(userProfile.$id)) {
       //userProfile -> current id
+      // Remove from following
       const index = following.indexOf(userProfile.$id);
       following.splice(index, 1);
     } else {
+      // Add to following
       following.push(userProfile.$id);
     }
 
     if (followers.includes(user.$id)) {
       //userProfile -> current id
+      // Remove from followers
       const index = followers.indexOf(user.$id);
       followers.splice(index, 1);
     } else {
+      // Add to followers
       followers.push(user.$id);
     }
 
@@ -89,6 +93,9 @@ const Profile = () => {
       follower_count: followers.length,
     };
 
+    console.log("payload1:", payload1);
+    console.log("payload2:", payload2);
+
     //update doc - response 1 is going to update our user
     const response1 = await database.updateDocument(
       DEV_DB_ID,
@@ -98,8 +105,8 @@ const Profile = () => {
     );
 
     console.log("response1:", response1);
-    //update doc - response 2 is going to update our userProfile
 
+    //update doc - response 2 is going to update our userProfile
     const response2 = await database.updateDocument(
       DEV_DB_ID,
       COLLECTION_ID_PROFILES,
@@ -108,6 +115,13 @@ const Profile = () => {
     );
 
     console.log("response2:", response2);
+
+    // Update userProfile state to reflect changes
+    setUserProfile(prevState => ({
+      ...prevState,
+      followers: followers,
+      follower_count: followers.length,
+    }));
   };
 
   if (loading) return;
@@ -170,3 +184,10 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// USER:
+//1.- This object represents the currently logged-in user. It's used for operations related to the authenticated user, such as following other users.
+//2.- Is typically obtained from the authentication context (useAuth()), indicating it's the currently authenticated user.
+// USERPROFILE:
+//1.- This object represents the profile of the user whose profile page we are currently viewing. It's used to display profile information such as username, bio, profile picture, followers, etc.
+//2.- Is fetched by querying documents from the database, specifically retrieving the profile of the user whose username matches the parameter in the URL (username).
