@@ -4,10 +4,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="container mx-auto max-w-[600px] border-4 border-yellow-500">
-        {" "}
-        {children}
-      </div>
+      <div className="container mx-auto max-w-[600px]"> {children}</div>
     </>
   );
 };
@@ -17,5 +14,3 @@ MainLayout.propTypes = {
 };
 
 export default MainLayout;
-
-//   bg-red-500  border-4 border-yellow-500
