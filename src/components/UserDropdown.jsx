@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { database, DEV_DB_ID, COLLECTION_ID_PROFILES } from "../appwriteConfig";
 import { useAuth } from "../context/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UserDropdown = () => {
   const { user, setUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
