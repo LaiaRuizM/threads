@@ -67,8 +67,8 @@ const UserDropdown = () => {
       selectedUser.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const navigateToUserProfile = userId => {
-    navigate(`/profiles/${userId}`);
+  const navigateToUserProfile = selectedUser => {
+    navigate(`/profile/${selectedUser.username}`);
   };
 
   return (
@@ -88,7 +88,7 @@ const UserDropdown = () => {
             <div
               key={selectedUser.$id}
               className="p-4 flex justify-between items-center border-b border-gray-200"
-              onClick={() => navigateToUserProfile(selectedUser.$id)} // Navegate to user's profile
+              onClick={() => navigateToUserProfile(selectedUser)} // Navegate to user's profile
               style={{ cursor: "pointer" }}>
               <span className="text-black w-full overflow-hidden text-ellipsis">
                 {selectedUser.username}
