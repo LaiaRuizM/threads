@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { database, DEV_DB_ID, COLLECTION_ID_PROFILES } from "../appwriteConfig";
 import { useAuth } from "../context/AuthContext";
 
 const UserDropdown = () => {
+  const { user, setUser } = useAuth();
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const { user } = useAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -40,27 +40,36 @@ const UserDropdown = () => {
       user.$id,
       payload
     );
+    setUser({ ...user, profile: { ...user.profile, following: following } });
     console.log("Updated following list:", response);
   };
 
   return (
-    <div>
-      <select
-        onChange={e => setSelectedUser(e.target.value)}
-        value={selectedUser}>
-        <option value="">Select a user</option>
-        {users.map(usr => (
-          <option key={usr.$id} value={usr.$id}>
-            {usr.username}
-          </option>
-        ))}
-      </select>
-      {selectedUser && (
-        <button onClick={() => handleFollow(selectedUser)}>
-          {user.profile.following.includes(selectedUser)
-            ? "Unfollow"
-            : "Follow"}
-        </button>
+    <div className="relative">
+      <button onClick={() => setDropdownOpen(!dropdownOpen)}>
+        Select User
+      </button>
+      {dropdownOpen && (
+        <div className="absolute mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
+          {users.map(selectedUser => (
+            <div
+              key={selectedUser.$id}
+              className="p-4 flex justify-between items-center border-b border-gray-200">
+              <span className="text-black">{selectedUser.username}</span>
+              <button
+                onClick={() => handleFollow(selectedUser.$id)}
+                className={
+                  user.profile.following.includes(selectedUser.$id)
+                    ? "bg-black text-white py-2 px-4 border text-sm border-black-500 rounded-full cursor-pointer"
+                    : "bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer"
+                }>
+                {user.profile.following.includes(selectedUser.$id)
+                  ? "Unfollow"
+                  : "Follow"}
+              </button>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
