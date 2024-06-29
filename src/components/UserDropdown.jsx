@@ -75,10 +75,10 @@ const UserDropdown = () => {
     <div className="relative">
       <input
         type="text"
-        placeholder="Search users..."
+        placeholder="Search users"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="py-2 text-black px-4 w-full bg-white border border-gray-300 rounded-md"
+        className="py-2 text-black px-40 bg-white border border-gray-300 rounded-md text-center w-full"
         onFocus={() => setDropdownOpen(true)} //User clicks on this input or select it using tab.
         onBlur={() => setTimeout(() => setDropdownOpen(false), 100)} //User clicks outside from the input or uses the tab to move to another element.
       />

@@ -4,7 +4,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="container mx-auto max-w-[600px]"> {children}</div>
+      <div className="container mx-auto max-w-[600px] "> {children}</div>
     </>
   );
 };

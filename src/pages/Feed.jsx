@@ -141,7 +141,7 @@ const Feed = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="p-4">
         <form onSubmit={handleThreadSubmit}>
           <textarea
