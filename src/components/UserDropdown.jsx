@@ -45,8 +45,10 @@ const UserDropdown = () => {
     console.log("Updated following list:", response);
   };
 
-  const filteredUsers = users.filter(selectedUser =>
-    selectedUser.username.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUsers = users.filter(
+    selectedUser =>
+      selectedUser.username &&
+      selectedUser.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -57,8 +59,8 @@ const UserDropdown = () => {
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         className="py-2 px-4 w-full bg-white border border-gray-300 rounded-md"
-        onFocus={() => setDropdownOpen(true)}
-        onBlur={() => setTimeout(() => setDropdownOpen(false), 100)}
+        onFocus={() => setDropdownOpen(true)} //User clicks on this input or select it using tab.
+        onBlur={() => setTimeout(() => setDropdownOpen(false), 100)} //User clicks outside from the input or uses the tab to move to another element.
       />
       {dropdownOpen && (
         <div className="absolute mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
