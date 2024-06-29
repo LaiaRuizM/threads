@@ -50,7 +50,7 @@ const UserDropdown = () => {
         Select User
       </button>
       {dropdownOpen && (
-        <div className="absolute mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
+        <div className="absolute mt-2 w-64 bg-white border border-gray-300 rounded-md shadow-lg">
           {users.map(selectedUser => (
             <div
               key={selectedUser.$id}
@@ -60,8 +60,8 @@ const UserDropdown = () => {
                 onClick={() => handleFollow(selectedUser.$id)}
                 className={
                   user.profile.following.includes(selectedUser.$id)
-                    ? "bg-black text-white py-2 px-4 border text-sm border-black-500 rounded-full cursor-pointer"
-                    : "bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer"
+                    ? "ml-4 bg-black text-white py-2 px-4 border text-sm border-black-500 rounded-full cursor-pointer"
+                    : "ml-4 bg-white text-black py-2 px-4 border text-sm border-black rounded-full cursor-pointer"
                 }>
                 {user.profile.following.includes(selectedUser.$id)
                   ? "Unfollow"
