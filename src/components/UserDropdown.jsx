@@ -58,7 +58,7 @@ const UserDropdown = () => {
         placeholder="Search users..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="py-2 px-4 w-full bg-white border border-gray-300 rounded-md"
+        className="py-2 text-black px-4 w-full bg-white border border-gray-300 rounded-md"
         onFocus={() => setDropdownOpen(true)} //User clicks on this input or select it using tab.
         onBlur={() => setTimeout(() => setDropdownOpen(false), 100)} //User clicks outside from the input or uses the tab to move to another element.
       />
@@ -72,6 +72,7 @@ const UserDropdown = () => {
                 {selectedUser.username}
               </span>
               <button
+                onMouseDown={e => e.preventDefault()} // Prevent blur on button click
                 onClick={() => handleFollow(selectedUser.$id)}
                 className={
                   user.profile.following.includes(selectedUser.$id)
