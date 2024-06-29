@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { database, DEV_DB_ID, COLLECTION_ID_PROFILES } from "../appwriteConfig";
 import { useAuth } from "../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 const UserDropdown = () => {
   const { user, setUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -65,6 +67,10 @@ const UserDropdown = () => {
       selectedUser.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const navigateToUserProfile = userId => {
+    history.push(`/profiles/${userId}`);
+  };
+
   return (
     <div className="relative">
       <input
@@ -81,7 +87,9 @@ const UserDropdown = () => {
           {filteredUsers.map(selectedUser => (
             <div
               key={selectedUser.$id}
-              className="p-4 flex justify-between items-center border-b border-gray-200">
+              className="p-4 flex justify-between items-center border-b border-gray-200"
+              onClick={() => navigateToUserProfile(selectedUser.$id)} // Navegate to user's profile
+              style={{ cursor: "pointer" }}>
               <span className="text-black w-full overflow-hidden text-ellipsis">
                 {selectedUser.username}
               </span>
