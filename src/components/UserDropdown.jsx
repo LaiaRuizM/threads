@@ -61,12 +61,14 @@ const UserDropdown = () => {
         onBlur={() => setTimeout(() => setDropdownOpen(false), 100)}
       />
       {dropdownOpen && (
-        <div className="absolute mt-2 w-64 bg-white border border-gray-300 rounded-md shadow-lg">
-          {users.map(selectedUser => (
+        <div className="absolute mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {filteredUsers.map(selectedUser => (
             <div
               key={selectedUser.$id}
               className="p-4 flex justify-between items-center border-b border-gray-200">
-              <span className="text-black">{selectedUser.username}</span>
+              <span className="text-black w-full overflow-hidden text-ellipsis">
+                {selectedUser.username}
+              </span>
               <button
                 onClick={() => handleFollow(selectedUser.$id)}
                 className={
