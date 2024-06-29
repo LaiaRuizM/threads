@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Image } from "react-feather";
 import Thread from "../components/Thread";
-import UserDropdown from "../components/UserDropdown";
 import {
   database,
   storage,
@@ -174,8 +173,6 @@ const Feed = () => {
           </div>
         </form>
       </div>
-
-      <UserDropdown />
 
       {threads.map(thread => (
         <Thread

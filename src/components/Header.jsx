@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import PropTypes from "prop-types";
+import UserDropdown from "./UserDropdown";
 
 const Header = () => {
   const { user, logoutUser } = useAuth();
@@ -9,6 +10,7 @@ const Header = () => {
       <Link to={"/"}>
         <strong className="text-4xl text-white">@</strong>
       </Link>
+      <UserDropdown />
       {user ? (
         <div className="flex items-center justify-center gap-4">
           <Link to={`/profile/${user?.profile.username}`}>
