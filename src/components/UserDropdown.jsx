@@ -68,7 +68,7 @@ const UserDropdown = () => {
   );
 
   const navigateToUserProfile = userId => {
-    navigate.push(`/profiles/${userId}`);
+    navigate(`/profiles/${userId}`);
   };
 
   return (
