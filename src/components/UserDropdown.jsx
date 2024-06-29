@@ -8,7 +8,7 @@ const UserDropdown = () => {
   const [users, setUsers] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -68,7 +68,7 @@ const UserDropdown = () => {
   );
 
   const navigateToUserProfile = userId => {
-    history.push(`/profiles/${userId}`);
+    navigate.push(`/profiles/${userId}`);
   };
 
   return (
