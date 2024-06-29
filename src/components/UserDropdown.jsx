@@ -6,6 +6,7 @@ const UserDropdown = () => {
   const { user, setUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -44,11 +45,21 @@ const UserDropdown = () => {
     console.log("Updated following list:", response);
   };
 
+  const filteredUsers = users.filter(selectedUser =>
+    selectedUser.username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="relative">
-      <button onClick={() => setDropdownOpen(!dropdownOpen)}>
-        Select User
-      </button>
+      <input
+        type="text"
+        placeholder="Search users..."
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="py-2 px-4 w-full bg-white border border-gray-300 rounded-md"
+        onFocus={() => setDropdownOpen(true)}
+        onBlur={() => setTimeout(() => setDropdownOpen(false), 100)}
+      />
       {dropdownOpen && (
         <div className="absolute mt-2 w-64 bg-white border border-gray-300 rounded-md shadow-lg">
           {users.map(selectedUser => (
