@@ -41,7 +41,21 @@ const UserDropdown = () => {
       user.$id,
       payload
     );
-    setUser({ ...user, profile: { ...user.profile, following: following } });
+    //setUser({ ...user, profile: { ...user.profile, following: following } });
+
+    // Update the local users list to reflect the changes immediately
+    setUsers(
+      users.map(userItem => {
+        if (userItem.$id === userId) {
+          return {
+            ...userItem,
+            isFollowed: !userItem.isFollowed,
+          };
+        }
+        return userItem;
+      })
+    );
+
     console.log("Updated following list:", response);
   };
 
